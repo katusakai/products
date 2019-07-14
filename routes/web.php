@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'role:admin'], function () {
+    Route::get('/admin', function () {
+        return view('admin/index');
+    });
+
+    Route::get('admin/products', 'Admin\ProductController@index')->name('admin.products.index');
+});
