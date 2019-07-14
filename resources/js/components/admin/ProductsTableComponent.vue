@@ -19,7 +19,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="product in products">
+                        <tr v-for="product in products.data">
                             <td><input type="checkbox"></td>
                             <td>{{product.name}}</td>
                             <td>{{product.sku}}</td>
@@ -32,6 +32,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <pagination :data="products" @pagination-change-page="getResults"></pagination>
             </div>
         </div>
     </div>
@@ -43,7 +44,7 @@
 
         data: function () {
             return {
-                products: null,
+                products: {},
                 url: '',
                 pagination: []
             }
@@ -54,10 +55,11 @@
         },
 
         methods: {
-            getResults() {
+            getResults(page = 1) {
                 axios
-                    .get(this.routeIndex)
+                    .get(this.routeIndex + '?page=' + page)
                     .then(response => this.products = response.data)
+
             }
         }
     }
