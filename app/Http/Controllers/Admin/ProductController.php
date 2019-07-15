@@ -23,4 +23,11 @@ class ProductController extends Controller
         Product::destroy($id);
 
     }
+
+    public function changeStatus(int $id, bool $value)
+    {
+        $product = Product::find($id);
+        $product->status = $value;
+        $product->save();
+    }
 }

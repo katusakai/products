@@ -1,19 +1,21 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 p-0">
                 <select class="form-control"
                     v-model="selected"
                 >
                     <option value="choose">Choose Action</option>
                     <option value="delete">Delete</option>
+                    <option value="enable">Enable</option>
+                    <option value="disable">Disable</option>
                 </select>
             </div>
             <div class="col-md-4">
-                <button class="btn-sm btn-success" @click="selectedAction">Apply action</button>
+                <button class="btn btn-success" @click="selectedAction">Apply action</button>
             </div>
             <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-bordered table-striped table-hover text-nowrap">
                     <thead>
                         <tr>
                             <th><input type="checkbox" id="toggleCheckboxes"
@@ -21,6 +23,7 @@
                             <th>Name</th>
                             <th>Sku</th>
                             <th>Price</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -33,11 +36,22 @@
                             <td>{{product.name}}</td>
                             <td>{{product.sku}}</td>
                             <td>{{product.price}} €</td>
-                            <td class="d-flex">
+                            <td>{{(product.status == 1 ? 'Enabled' : 'Disabled')}}</td>
+                            <td>
                                 <a class="text-primary" href="javascript:void(0)">View</a>
                                 <a class="text-success pl-1" href="javascript:void(0)">Edit</a>
                                 <a class="text-danger pl-1" href="javascript:void(0)"
                                 @click="destroySingle(product.id, index)">Delete</a>
+
+                                <a class="pl-1" href="javascript:void(0)"
+                                    @click="changeStatus(product.id, 0)"
+                                    v-if="product.status == 1"
+                                >Disable</a>
+
+                                <a class="pl-1" href="javascript:void(0)"
+                                    @click="changeStatus(product.id, 1)"
+                                    v-else
+                                >Enable</a>
                             </td>
                         </tr>
                     </tbody>
@@ -58,6 +72,7 @@
 
         data: function () {
             return {
+                url: '',
                 products: {},
                 pagination: [],
                 checkboxes: document.getElementsByClassName('checkbox'),
@@ -74,7 +89,13 @@
             getResults(page = 1) {
                 axios
                     .get(this.routeIndex + '?page=' + page)
-                    .then(response => this.products = response.data)
+                    .then(response => {this.products = response.data, this.url = response.config.url})
+            },
+
+            keepResults() {
+                axios
+                    .get(this.url)
+                    .then(response => (this.products = response.data))
             },
 
             selectedAction() {
@@ -85,7 +106,7 @@
 
             destroy(id, index) {
                 axios
-                    .delete('admin/' + id)
+                    .delete('admin/product/' + id)
                     .then(Vue.delete(this.products.data, index))
             },
 
@@ -101,6 +122,12 @@
                     this.destroy(data[i].id, data[i].index)
                 }
                 this.unCheckAll()
+            },
+
+            changeStatus(id, value) {
+                axios
+                    .put('admin/product/' + id + '/' + value)
+                    .then(this.keepResults())
             },
 
             toggleCheckboxes() {

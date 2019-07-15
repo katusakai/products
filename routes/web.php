@@ -25,5 +25,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     });
 
     Route::get('admin/products', 'Admin\ProductController@index')->name('admin.products.index');
-    Route::delete('admin/{id}', 'Admin\ProductController@destroy')->name('admin.product.destroy');
+    Route::delete('admin/product/{id}', 'Admin\ProductController@destroy')->name('admin.product.destroy');
+    Route::put('admin/product/{id}/{value}', 'Admin\ProductController@changeStatus')->name('admin.product.change.status');
 });
