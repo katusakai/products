@@ -89,7 +89,11 @@
             getResults(page = 1) {
                 axios
                     .get(this.routeIndex + '?page=' + page)
-                    .then(response => {this.products = response.data, this.url = response.config.url})
+                    .then(response => {
+                        this.products = response.data;
+                        this.url = response.config.url;
+                        this.unCheckAll()
+                    })
             },
 
             keepResults() {
@@ -99,8 +103,16 @@
             },
 
             selectedAction() {
-                if (this.selected === 'delete') {
-                    this.destroyMany()
+                switch(this.selected) {
+                    case 'delete':
+                        this.destroyMany();
+                        break;
+                    case 'enable':
+                        this.changeStatusMany(1);
+                        break;
+                    case 'disable':
+                        this.changeStatusMany(0);
+                        break;
                 }
             },
 
@@ -127,7 +139,15 @@
             changeStatus(id, value) {
                 axios
                     .put('admin/product/' + id + '/' + value)
-                    .then(this.keepResults())
+                this.keepResults()
+            },
+
+            changeStatusMany(value) {
+                let data = this.selectedCheckboxes();
+                for (let i = 0; i < data.length; i++ ) {
+                    this.changeStatus(data[i].id, value)
+                }
+                this.unCheckAll()
             },
 
             toggleCheckboxes() {

@@ -1925,7 +1925,10 @@ __webpack_require__.r(__webpack_exports__);
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       axios.get(this.routeIndex + '?page=' + page).then(function (response) {
-        _this.products = response.data, _this.url = response.config.url;
+        _this.products = response.data;
+        _this.url = response.config.url;
+
+        _this.unCheckAll();
       });
     },
     keepResults: function keepResults() {
@@ -1936,8 +1939,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     selectedAction: function selectedAction() {
-      if (this.selected === 'delete') {
-        this.destroyMany();
+      switch (this.selected) {
+        case 'delete':
+          this.destroyMany();
+          break;
+
+        case 'enable':
+          this.changeStatusMany(1);
+          break;
+
+        case 'disable':
+          this.changeStatusMany(0);
+          break;
       }
     },
     destroy: function destroy(id, index) {
@@ -1958,7 +1971,17 @@ __webpack_require__.r(__webpack_exports__);
       this.unCheckAll();
     },
     changeStatus: function changeStatus(id, value) {
-      axios.put('admin/product/' + id + '/' + value).then(this.keepResults());
+      axios.put('admin/product/' + id + '/' + value);
+      this.keepResults();
+    },
+    changeStatusMany: function changeStatusMany(value) {
+      var data = this.selectedCheckboxes();
+
+      for (var i = 0; i < data.length; i++) {
+        this.changeStatus(data[i].id, value);
+      }
+
+      this.unCheckAll();
     },
     toggleCheckboxes: function (_toggleCheckboxes) {
       function toggleCheckboxes() {
