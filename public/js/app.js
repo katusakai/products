@@ -1879,13 +1879,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['routeIndex'],
   data: function data() {
     return {
       products: {},
-      url: '',
-      pagination: []
+      pagination: [],
+      checkboxes: document.getElementsByClassName('checkbox'),
+      toggleCheckboxe: document.getElementById('toggleCheckboxes')
     };
   },
   mounted: function mounted() {
@@ -1904,7 +1908,28 @@ __webpack_require__.r(__webpack_exports__);
       if (confirm('Do you really want to delete?')) {
         axios["delete"]('admin/' + id).then(Vue["delete"](this.products.data, index));
       }
-    }
+    },
+    toggleCheckboxes: function (_toggleCheckboxes) {
+      function toggleCheckboxes() {
+        return _toggleCheckboxes.apply(this, arguments);
+      }
+
+      toggleCheckboxes.toString = function () {
+        return _toggleCheckboxes.toString();
+      };
+
+      return toggleCheckboxes;
+    }(function () {
+      if (toggleCheckboxes.checked) {
+        for (var i = 0; i < this.checkboxes.length; i++) {
+          this.checkboxes[i].checked = true;
+        }
+      } else {
+        for (var _i = 0; _i < this.checkboxes.length; _i++) {
+          this.checkboxes[_i].checked = false;
+        }
+      }
+    })
   }
 });
 
@@ -38584,68 +38609,96 @@ var render = function() {
       _vm._v(" "),
       _vm._m(1),
       _vm._v(" "),
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          { staticClass: "table table-bordered table-striped table-hover" },
+          [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [
+                  _c("input", {
+                    attrs: { type: "checkbox", id: "toggleCheckboxes" },
+                    on: {
+                      click: function($event) {
+                        return _vm.toggleCheckboxes()
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Name")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Sku")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Price")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Actions")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.products.data, function(product, index) {
+                return _c("tr", [
+                  _c("td", [
+                    _c("input", {
+                      staticClass: "checkbox",
+                      attrs: { id: "checkbox-" + index, type: "checkbox" }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(product.name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(product.sku))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(product.price) + " €")]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "d-flex" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text-primary",
+                        attrs: { href: "javascript:void(0)" }
+                      },
+                      [_vm._v("View")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text-success pl-1",
+                        attrs: { href: "javascript:void(0)" }
+                      },
+                      [_vm._v("Edit")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text-danger pl-1",
+                        attrs: { href: "javascript:void(0)" },
+                        on: {
+                          click: function($event) {
+                            return _vm.destroy(product.id, index)
+                          }
+                        }
+                      },
+                      [_vm._v("Delete")]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "table-responsive" },
         [
-          _c(
-            "table",
-            { staticClass: "table table-bordered table-striped table-hover" },
-            [
-              _vm._m(2),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.products.data, function(product, index) {
-                  return _c("tr", [
-                    _vm._m(3, true),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(product.name))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(product.sku))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(product.price) + " €")]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "d-flex" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "text-primary",
-                          attrs: { href: "javascript:void(0)" }
-                        },
-                        [_vm._v("View")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "text-success pl-1",
-                          attrs: { href: "javascript:void(0)" }
-                        },
-                        [_vm._v("Edit")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "text-danger pl-1",
-                          attrs: { href: "javascript:void(0)" },
-                          on: {
-                            click: function($event) {
-                              return _vm.destroy(product.id, index)
-                            }
-                          }
-                        },
-                        [_vm._v("Delete")]
-                      )
-                    ])
-                  ])
-                }),
-                0
-              )
-            ]
-          ),
-          _vm._v(" "),
           _c("pagination", {
             attrs: { data: _vm.products },
             on: { "pagination-change-page": _vm.getResults }
@@ -38674,30 +38727,6 @@ var staticRenderFns = [
         _vm._v("Apply action")
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_c("input", { attrs: { type: "checkbox" } })]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Sku")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Price")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Actions")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("input", { attrs: { type: "checkbox" } })])
   }
 ]
 render._withStripped = true

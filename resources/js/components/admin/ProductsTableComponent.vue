@@ -11,7 +11,8 @@
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
-                            <th><input type="checkbox"></th>
+                            <th><input type="checkbox" id="toggleCheckboxes"
+                                       @click="toggleCheckboxes()"></th>
                             <th>Name</th>
                             <th>Sku</th>
                             <th>Price</th>
@@ -20,7 +21,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="(product, index) in products.data">
-                            <td><input type="checkbox"></td>
+                            <td><input class="checkbox" :id="'checkbox-'+index" type="checkbox"></td>
                             <td>{{product.name}}</td>
                             <td>{{product.sku}}</td>
                             <td>{{product.price}} €</td>
@@ -33,6 +34,8 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="table-responsive">
                 <pagination :data="products" @pagination-change-page="getResults"></pagination>
             </div>
         </div>
@@ -48,8 +51,10 @@
         data: function () {
             return {
                 products: {},
-                url: '',
-                pagination: []
+                pagination: [],
+                checkboxes: document.getElementsByClassName('checkbox'),
+                toggleCheckboxe: document.getElementById('toggleCheckboxes'),
+
             }
         },
 
@@ -69,6 +74,18 @@
                     axios
                         .delete('admin/' + id)
                         .then(Vue.delete(this.products.data, index))
+                }
+            },
+
+            toggleCheckboxes() {
+                if (toggleCheckboxes.checked)  {
+                    for (let i = 0; i < this.checkboxes.length; i++) {
+                        this.checkboxes[i].checked = true;
+                    }
+                } else {
+                    for (let i = 0; i < this.checkboxes.length; i++) {
+                        this.checkboxes[i].checked = false;
+                    }
                 }
             }
         }
