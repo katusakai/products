@@ -19,15 +19,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="product in products.data">
+                        <tr v-for="(product, index) in products.data">
                             <td><input type="checkbox"></td>
                             <td>{{product.name}}</td>
                             <td>{{product.sku}}</td>
                             <td>{{product.price}} €</td>
                             <td class="d-flex">
-                                <a class="text-primary" href="#">View</a>
-                                <a class="text-success pl-1" href="#">Edit</a>
-                                <a class="text-danger pl-1" href="#">Delete</a>
+                                <a class="text-primary" href="javascript:void(0)">View</a>
+                                <a class="text-success pl-1" href="javascript:void(0)">Edit</a>
+                                <a class="text-danger pl-1" href="javascript:void(0)"
+                                @click="destroy(product.id, index)">Delete</a>
                             </td>
                         </tr>
                     </tbody>
@@ -40,7 +41,9 @@
 
 <script>
     export default {
-        props: ['routeIndex'],
+        props: [
+            'routeIndex',
+        ],
 
         data: function () {
             return {
@@ -59,7 +62,14 @@
                 axios
                     .get(this.routeIndex + '?page=' + page)
                     .then(response => this.products = response.data)
+            },
 
+            destroy(id, index) {
+                if (confirm('Do you really want to delete?')) {
+                    axios
+                        .delete('admin/' + id)
+                        .then(Vue.delete(this.products.data, index))
+                }
             }
         }
     }

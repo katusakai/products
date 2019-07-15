@@ -1878,6 +1878,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['routeIndex'],
   data: function data() {
@@ -1898,6 +1899,11 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(this.routeIndex + '?page=' + page).then(function (response) {
         return _this.products = response.data;
       });
+    },
+    destroy: function destroy(id, index) {
+      if (confirm('Do you really want to delete?')) {
+        axios["delete"]('admin/' + id).then(Vue["delete"](this.products.data, index));
+      }
     }
   }
 });
@@ -38590,7 +38596,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.products.data, function(product) {
+                _vm._l(_vm.products.data, function(product, index) {
                   return _c("tr", [
                     _vm._m(3, true),
                     _vm._v(" "),
@@ -38600,7 +38606,39 @@ var render = function() {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(product.price) + " €")]),
                     _vm._v(" "),
-                    _vm._m(4, true)
+                    _c("td", { staticClass: "d-flex" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "text-primary",
+                          attrs: { href: "javascript:void(0)" }
+                        },
+                        [_vm._v("View")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "text-success pl-1",
+                          attrs: { href: "javascript:void(0)" }
+                        },
+                        [_vm._v("Edit")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "text-danger pl-1",
+                          attrs: { href: "javascript:void(0)" },
+                          on: {
+                            click: function($event) {
+                              return _vm.destroy(product.id, index)
+                            }
+                          }
+                        },
+                        [_vm._v("Delete")]
+                      )
+                    ])
                   ])
                 }),
                 0
@@ -38660,24 +38698,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [_c("input", { attrs: { type: "checkbox" } })])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "d-flex" }, [
-      _c("a", { staticClass: "text-primary", attrs: { href: "#" } }, [
-        _vm._v("View")
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "text-success pl-1", attrs: { href: "#" } }, [
-        _vm._v("Edit")
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "text-danger pl-1", attrs: { href: "#" } }, [
-        _vm._v("Delete")
-      ])
-    ])
   }
 ]
 render._withStripped = true

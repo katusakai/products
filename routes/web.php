@@ -19,10 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'role:admin'], function () {
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/admin', function () {
         return view('admin/index');
     });
 
     Route::get('admin/products', 'Admin\ProductController@index')->name('admin.products.index');
+    Route::delete('admin/{id}', 'Admin\ProductController@destroy')->name('admin.product.destroy');
 });

@@ -12,8 +12,15 @@ class ProductController extends Controller
 {
     public function index()
     {
-//        $products = Product::all();
         $products = Product::paginate(15);
-        return json_encode($products);
+        return response()->json(
+            $products
+        );
+    }
+
+    public function destroy($id)
+    {
+        Product::destroy($id);
+
     }
 }
