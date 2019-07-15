@@ -10644,3 +10644,15 @@ a.text-dark:focus {
   }
 }
 
+.product-card {
+  min-width: 318px;
+}
+
+.card-toggler {
+  text-align: center;
+}
+
+.card-toggler:hover {
+  background-color: #e9ecef;
+}
+

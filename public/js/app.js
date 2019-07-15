@@ -1910,8 +1910,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['selectedProduct']
+  props: ['selectedProduct'],
+  data: function data() {
+    return {
+      isActive: true
+    };
+  },
+  methods: {
+    toggle: function toggle() {
+      this.isActive = !this.isActive;
+    }
+  }
 });
 
 /***/ }),
@@ -38849,31 +38863,51 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _vm.selectedProduct
-        ? _c("div", { staticClass: "d-block" }, [
-            _c("div", [
-              _vm._v("\n                Product name:\n                "),
-              _c("strong", [_vm._v(_vm._s(_vm.selectedProduct.name))])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _vm._v("\n                Product sku:\n                "),
-              _c("strong", [_vm._v(_vm._s(_vm.selectedProduct.sku))])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _vm._v("\n                Status:\n                "),
-              _c("strong", [_vm._v(_vm._s(_vm.selectedProduct.status))])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _vm._v("\n                Price:\n                "),
-              _c("strong", [_vm._v(_vm._s(_vm.selectedProduct.price) + " €")])
-            ]),
-            _vm._v(" "),
-            _vm._m(0)
-          ])
-        : _vm._e()
+      _c("div", { staticClass: "d-block product-card" }, [
+        _vm.selectedProduct
+          ? _c(
+              "div",
+              { staticClass: "border card-toggler", on: { click: _vm.toggle } },
+              [_vm._v(_vm._s(_vm.isActive ? "Show Product" : "Hide Product"))]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.selectedProduct && _vm.isActive
+          ? _c("div", { staticClass: "d-block border p-2" }, [
+              _c("div", [
+                _vm._v(
+                  "\n                    Product name:\n                    "
+                ),
+                _c("strong", [_vm._v(_vm._s(_vm.selectedProduct.name))])
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                    Product sku:\n                    "
+                ),
+                _c("strong", [_vm._v(_vm._s(_vm.selectedProduct.sku))])
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v("\n                    Status:\n                    "),
+                _c("strong", [
+                  _vm._v(
+                    _vm._s(
+                      _vm.selectedProduct.status == 1 ? "Enabled" : "Disabled"
+                    )
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v("\n                    Price:\n                    "),
+                _c("strong", [_vm._v(_vm._s(_vm.selectedProduct.price) + " €")])
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
+          : _vm._e()
+      ])
     ])
   ])
 }
