@@ -1882,6 +1882,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['routeIndex'],
   data: function data() {
@@ -1889,7 +1897,8 @@ __webpack_require__.r(__webpack_exports__);
       products: {},
       pagination: [],
       checkboxes: document.getElementsByClassName('checkbox'),
-      toggleCheckboxe: document.getElementById('toggleCheckboxes')
+      toggleCheckboxe: document.getElementById('toggleCheckboxes'),
+      selected: 'choose'
     };
   },
   mounted: function mounted() {
@@ -1904,10 +1913,27 @@ __webpack_require__.r(__webpack_exports__);
         return _this.products = response.data;
       });
     },
-    destroy: function destroy(id, index) {
-      if (confirm('Do you really want to delete?')) {
-        axios["delete"]('admin/' + id).then(Vue["delete"](this.products.data, index));
+    selectedAction: function selectedAction() {
+      if (this.selected === 'delete') {
+        this.destroyMany();
       }
+    },
+    destroy: function destroy(id, index) {
+      axios["delete"]('admin/' + id).then(Vue["delete"](this.products.data, index));
+    },
+    destroySingle: function destroySingle(id, index) {
+      if (confirm('Do you really want to delete?')) {
+        this.destroy(id, index);
+      }
+    },
+    destroyMany: function destroyMany() {
+      var data = this.selectedCheckboxes();
+
+      for (var i = 0; i < data.length; i++) {
+        this.destroy(data[i].id, data[i].index);
+      }
+
+      this.unCheckAll();
     },
     toggleCheckboxes: function (_toggleCheckboxes) {
       function toggleCheckboxes() {
@@ -1921,15 +1947,37 @@ __webpack_require__.r(__webpack_exports__);
       return toggleCheckboxes;
     }(function () {
       if (toggleCheckboxes.checked) {
-        for (var i = 0; i < this.checkboxes.length; i++) {
-          this.checkboxes[i].checked = true;
-        }
+        this.checkAll();
       } else {
-        for (var _i = 0; _i < this.checkboxes.length; _i++) {
-          this.checkboxes[_i].checked = false;
+        this.unCheckAll();
+      }
+    }),
+    checkAll: function checkAll() {
+      for (var i = 0; i < this.checkboxes.length; i++) {
+        this.checkboxes[i].checked = true;
+      }
+    },
+    unCheckAll: function unCheckAll() {
+      for (var i = 0; i < this.checkboxes.length; i++) {
+        this.checkboxes[i].checked = false;
+      }
+    },
+    selectedCheckboxes: function selectedCheckboxes() {
+      var allCheckboxes = document.getElementsByClassName('checkbox');
+      var selectedCheckboxes = [];
+
+      for (var i = 0; i < allCheckboxes.length; i++) {
+        if (allCheckboxes[i].checked) {
+          var data = {
+            id: allCheckboxes[i].getAttribute('data-product-id'),
+            index: allCheckboxes[i].getAttribute('data-product-index')
+          };
+          selectedCheckboxes.push(data);
         }
       }
-    })
+
+      return selectedCheckboxes;
+    }
   }
 });
 
@@ -38605,9 +38653,55 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "col-md-4" }, [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.selected,
+                expression: "selected"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.selected = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "choose" } }, [
+              _vm._v("Choose Action")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "delete" } }, [_vm._v("Delete")])
+          ]
+        )
+      ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "col-md-4" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn-sm btn-success",
+            on: { click: _vm.selectedAction }
+          },
+          [_vm._v("Apply action")]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "table-responsive" }, [
         _c(
@@ -38644,7 +38738,11 @@ var render = function() {
                   _c("td", [
                     _c("input", {
                       staticClass: "checkbox",
-                      attrs: { id: "checkbox-" + index, type: "checkbox" }
+                      attrs: {
+                        type: "checkbox",
+                        "data-product-id": product.id,
+                        "data-product-index": index
+                      }
                     })
                   ]),
                   _vm._v(" "),
@@ -38680,7 +38778,7 @@ var render = function() {
                         attrs: { href: "javascript:void(0)" },
                         on: {
                           click: function($event) {
-                            return _vm.destroy(product.id, index)
+                            return _vm.destroySingle(product.id, index)
                           }
                         }
                       },
@@ -38709,26 +38807,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("select", { staticClass: "form-control", attrs: { name: "", id: "" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("button", { staticClass: "btn-sm btn-success" }, [
-        _vm._v("Apply action")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
