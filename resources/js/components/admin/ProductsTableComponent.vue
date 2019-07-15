@@ -41,7 +41,9 @@
                             <td>{{product.price}} €</td>
                             <td>{{(product.status == 1 ? 'Enabled' : 'Disabled')}}</td>
                             <td>
-                                <a class="text-primary" href="javascript:void(0)">View</a>
+                                <a class="text-primary" href="javascript:void(0)"
+                                @click="selectProduct(index)"
+                                >View</a>
                                 <a class="text-success pl-1" href="javascript:void(0)">Edit</a>
                                 <a class="text-danger pl-1" href="javascript:void(0)"
                                 @click="destroySingle(product.id, index)">Delete</a>
@@ -118,6 +120,10 @@
                         this.changeStatusMany(0);
                         break;
                 }
+            },
+
+            selectProduct(index) {
+                this.$emit('productSelected', this.products.data[index])
             },
 
             destroy(id, index) {

@@ -1,22 +1,22 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="d-block">
+            <div v-if="selectedProduct" class="d-block">
                 <div>
                     Product name:
-                    <strong>Huawei P10 lite</strong>
+                    <strong>{{selectedProduct.name}}</strong>
                 </div>
                 <div>
                     Product sku:
-                    <strong>e6cfl5nb</strong>
+                    <strong>{{selectedProduct.sku}}</strong>
                 </div>
                 <div>
                     Status:
-                    <strong>Enabled</strong>
+                    <strong>{{selectedProduct.status}}</strong>
                 </div>
                 <div>
                     Price:
-                    <strong>312.95 €</strong>
+                    <strong>{{selectedProduct.price}} €</strong>
                 </div>
                 <div>
                     <img src="https://www.randomlists.com/img/things/hanger.jpg" alt="">
@@ -28,6 +28,6 @@
 
 <script>
     export default {
-
+        props: ['selectedProduct']
     }
 </script>
