@@ -10,6 +10,9 @@
                 >
                 </admin-products-table-component>
             </div>
+            <div class="col-md-4">
+                <admin-product-component></admin-product-component>
+            </div>
         </div>
     </div>
 @endsection

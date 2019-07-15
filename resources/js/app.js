@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('admin-products-table-component', require('./components/admin/ProductsTableComponent.vue').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('admin-product-component', require('./components/admin/ProductComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
