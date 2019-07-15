@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="table-responsive">
-                <pagination :data="products" @pagination-change-page="getResults"></pagination>
+                <pagination :data="products" :show-disabled="true" @pagination-change-page="getResults"></pagination>
             </div>
             <div class="col-md-4 p-0">
                 <select class="form-control"
@@ -61,7 +61,7 @@
                 </table>
             </div>
             <div class="table-responsive">
-                <pagination :data="products" @pagination-change-page="getResults"></pagination>
+                <pagination :data="products" :show-disabled="true" @pagination-change-page="getResults"></pagination>
             </div>
         </div>
     </div>
@@ -71,6 +71,7 @@
     export default {
         props: [
             'routeIndex',
+            'page'
         ],
 
         data: function () {
@@ -89,7 +90,7 @@
         },
 
         methods: {
-            getResults(page = 1) {
+            getResults(page = this.page) {
                 axios
                     .get(this.routeIndex + '?page=' + page)
                     .then(response => {

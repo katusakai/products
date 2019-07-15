@@ -1908,7 +1908,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['routeIndex'],
+  props: ['routeIndex', 'page'],
   data: function data() {
     return {
       url: '',
@@ -1926,7 +1926,7 @@ __webpack_require__.r(__webpack_exports__);
     getResults: function getResults() {
       var _this = this;
 
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.page;
       axios.get(this.routeIndex + '?page=' + page).then(function (response) {
         _this.products = response.data;
         _this.url = response.config.url;
@@ -38709,7 +38709,7 @@ var render = function() {
         { staticClass: "table-responsive" },
         [
           _c("pagination", {
-            attrs: { data: _vm.products },
+            attrs: { data: _vm.products, "show-disabled": true },
             on: { "pagination-change-page": _vm.getResults }
           })
         ],
@@ -38899,7 +38899,7 @@ var render = function() {
         { staticClass: "table-responsive" },
         [
           _c("pagination", {
-            attrs: { data: _vm.products },
+            attrs: { data: _vm.products, "show-disabled": true },
             on: { "pagination-change-page": _vm.getResults }
           })
         ],
