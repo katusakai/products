@@ -1904,6 +1904,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['routeIndex'],
   data: function data() {
@@ -38701,6 +38704,18 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "table-responsive" },
+        [
+          _c("pagination", {
+            attrs: { data: _vm.products },
+            on: { "pagination-change-page": _vm.getResults }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "col-md-4 p-0" }, [
         _c(
           "select",

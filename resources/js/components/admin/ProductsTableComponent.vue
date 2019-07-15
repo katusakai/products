@@ -1,6 +1,9 @@
 <template>
     <div class="container">
         <div class="row">
+            <div class="table-responsive">
+                <pagination :data="products" @pagination-change-page="getResults"></pagination>
+            </div>
             <div class="col-md-4 p-0">
                 <select class="form-control"
                     v-model="selected"
