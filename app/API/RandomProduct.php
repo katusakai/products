@@ -27,8 +27,13 @@ class RandomProduct
         $random_string = new Random();
 
         $this->name = $products[$random_value];
-        $this->image = 'https://www.randomlists.com/img/things/'. $this->name . '.jpg';
+        $this->image = 'https://www.randomlists.com/img/things/'. $this->spaceToUnderscore($this->name) . '.jpg';
         $this->sku = $random_string->size(8)->get();
         $this->price = $random_string->numeric()->size(rand(4, 5))->get()/100;
+    }
+
+    private function spaceToUnderscore($string) {
+        $string = str_replace(' ', '_', $string);
+        return $string;
     }
 }
