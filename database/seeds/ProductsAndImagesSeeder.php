@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Product;
-Use App\Image;
+use App\Image;
+use App\ProductDiscount;
 
 class ProductsAndImagesSeeder extends Seeder
 {
@@ -13,8 +14,12 @@ class ProductsAndImagesSeeder extends Seeder
      */
     public function run()
     {
-        factory(Product::class, 100)->create()->each(function ($product) {
-            $product->images()->save(factory(Image::class)->make());
+        factory(Product::class, 500)->create()
+            ->each(function ($product) {
+                $product->images()->save(factory(Image::class)->make());
+        })
+            ->each(function ($product) {
+            $product->discount()->save(factory(ProductDiscount::class)->make());
         });
     }
 }

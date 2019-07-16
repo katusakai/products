@@ -13,6 +13,7 @@ class Products
         $products = Product::paginate(15);
         foreach ($products as $key => $product) {
             $product['images'] = $product->images;
+            $product['discount'] = $product->discount;
             $products[$key] = $product;
         }
         return $products;
