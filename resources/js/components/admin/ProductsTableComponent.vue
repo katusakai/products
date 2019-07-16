@@ -38,7 +38,13 @@
                             ></td>
                             <td>{{product.name}}</td>
                             <td>{{product.sku}}</td>
-                            <td>{{product.price}} €</td>
+                            <td>
+                                <price-field
+                                    :price="product.price"
+                                    :discounted-price="product.discounted_price"
+                                    :taxes-text="product.taxes_text"
+                                ></price-field>
+                            </td>
                             <td>{{(product.status == 1 ? 'Enabled' : 'Disabled')}}</td>
                             <td>
                                 <a class="text-primary" href="javascript:void(0)"

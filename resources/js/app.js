@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('admin-products-parent', require('./components/admin/ParentProductsComponent').default);
 Vue.component('admin-products-table', require('./components/admin/ProductsTableComponent.vue').default);
 Vue.component('admin-product-card', require('./components/admin/ProductComponent').default);
+Vue.component('price-field', require('./components/PriceFieldComponent').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
 
 /**

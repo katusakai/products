@@ -16,9 +16,12 @@
                         <strong>Status:</strong>
                         {{(selectedProduct.status == 1 ? 'Enabled' : 'Disabled')}}
                     </div>
-                    <div v-if="selectedProduct.taxes_text">
-                        <strong>Price:</strong>
-                        {{selectedProduct.price}} € <small>{{selectedProduct.taxes_text}}</small>
+                    <div>
+                        <price-field
+                                :price="selectedProduct.price"
+                                :discounted-price="selectedProduct.discounted_price"
+                                :taxes-text="selectedProduct.taxes_text"
+                        ></price-field>
                     </div>
                     <div>
                         <img :src="selectedProduct.images[0].image" alt="">
