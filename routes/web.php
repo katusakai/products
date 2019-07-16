@@ -17,10 +17,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
-    Route::get('/admin', function () {
-        return view('admin/index');
-    })->name('admin.products');
-
+    Route::get('/admin', 'Admin\ProductController@home')->name('admin.products');
     Route::get('admin/products', 'Admin\ProductController@index')->name('admin.products.index');
     Route::delete('admin/product/{id}', 'Admin\ProductController@destroy')->name('admin.product.destroy');
     Route::put('admin/product/{id}/{value}', 'Admin\ProductController@changeStatus')->name('admin.product.change.status');

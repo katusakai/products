@@ -4,14 +4,20 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Aggregators\Products;
 use App\Http\Controllers\Controller;
 use App\Product;
 
 class ProductController extends Controller
 {
+    public function home()
+    {
+        return view('admin/index');
+    }
+
     public function index()
     {
-        $products = Product::paginate(15);
+        $products = Products::get();
         return response()->json(
             $products
         );

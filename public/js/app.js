@@ -38904,28 +38904,18 @@ var render = function() {
                 _c("strong", [_vm._v(_vm._s(_vm.selectedProduct.price) + " €")])
               ]),
               _vm._v(" "),
-              _vm._m(0)
+              _c("div", [
+                _c("img", {
+                  attrs: { src: _vm.selectedProduct.images[0].image, alt: "" }
+                })
+              ])
             ])
           : _vm._e()
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("img", {
-        attrs: {
-          src: "https://www.randomlists.com/img/things/hanger.jpg",
-          alt: ""
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

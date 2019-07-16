@@ -21,7 +21,7 @@
                         <strong>{{selectedProduct.price}} €</strong>
                     </div>
                     <div>
-                        <img src="https://www.randomlists.com/img/things/hanger.jpg" alt="">
+                        <img :src="selectedProduct.images[0].image" alt="">
                     </div>
                 </div>
             </div>
