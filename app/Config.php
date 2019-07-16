@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Config extends Model
 {
-    public static function taxRate()
+    public static function getTaxRate()
     {
-        return self::where('name','tax_rate')->first();
+        return intval(self::where('name','tax_rate')->first()->value);
     }
 
-    public static function taxInclusionFlag()
+    public static function getTaxInclusionFlag()
     {
-        return self::where('name','tax_inclusion_flag')->first();
+        return self::where('name','tax_inclusion_flag')->first()->value;
     }
 
-    public static function globalDiscount()
+    public static function getGlobalDiscount()
     {
-        return self::where('name','global_discount')->first();
+        return intval(self::where('name','global_discount')->first()->value);
     }
 }
