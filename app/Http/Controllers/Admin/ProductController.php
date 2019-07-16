@@ -7,6 +7,8 @@ namespace App\Http\Controllers\Admin;
 use App\Aggregators\Products;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\ProductDiscount;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -22,6 +24,32 @@ class ProductController extends Controller
         return response()->json(
             $products
         );
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:60',
+            'sku' => 'required',
+            'price' => 'required|numeric',
+            'description' => 'required',
+            'discount' => 'required|numeric'
+        ]);
+
+        $product = new Product();
+        $product->name = $request->name;
+        $product->sku = $request->sku;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->save();
+
+        $discount = new ProductDiscount();
+        $discount->product_id = Product::latest()->first()->id;
+        $discount->discount = $request->discount;
+
+        $discount->save();
+
+        return redirect(route('admin.products'));
     }
 
     public function destroy($id)

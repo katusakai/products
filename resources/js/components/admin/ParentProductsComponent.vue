@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <admin-product-create></admin-product-create>
         <div class="row">
             <div class="col-md-8">
                 <admin-products-table

@@ -23,7 +23,7 @@
                                 :taxes-text="selectedProduct.taxes_text"
                         ></price-field>
                     </div>
-                    <div>
+                    <div v-if="selectedProduct.images[0]">
                         <img :src="selectedProduct.images[0].image" alt="">
                     </div>
                     <div>
