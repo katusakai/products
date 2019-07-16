@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('sku');
             $table->tinyInteger('status')->default(1);
             $table->decimal('price', 8, 2);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

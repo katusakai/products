@@ -12,5 +12,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'name' => $product->name,
         'sku' => $product->sku,
         'price' => $product->price,
+        'description' => $faker->realText(),
     ];
 });
