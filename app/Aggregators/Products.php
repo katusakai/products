@@ -15,8 +15,10 @@ class Products
         foreach ($products as $key => $product) {
             $discount = intval($product->discount->discount);
 
-            $product['discount'] = $discount;
+            $product['price'] = $this->priceWithTaxes(floatval($product->price));
+            $product['discount'] = $discount;  //todo fix this. in php it dumps integer, but in json it dumps whole object from discount_table
             $product['discounted_price'] = $this->priceCalculator($product['price'], $discount);
+            $this->taxesText($product);
             $product['images'] = $product->images;
 
             $products[$key] = $product;
@@ -26,11 +28,11 @@ class Products
 
     private function priceCalculator($price, $discount)
     {
-        $discounted_price = $price * (1 - $this->choseDiscount($discount)/100);
+        $discounted_price = $price * (1 - $this->chooseDiscount($discount)/100);
         return $discounted_price;
     }
 
-    private function choseDiscount($discount)
+    private function chooseDiscount($discount)
     {
         if ($discount == 0) {
             return Config::getGlobalDiscount();
@@ -39,5 +41,17 @@ class Products
         }
     }
 
+    private function taxesText($product) {
+        if (Config::ifShowWithTaxes()){
+            $product['taxes_text'] = ' including VAT';
+        }
+        return $product;
+    }
 
+    private function priceWithTaxes($price) {
+        if(Config::ifShowWithTaxes()){
+            $price *= 1 + Config::getTaxRate()/100;
+        }
+        return $price;
+    }
 }

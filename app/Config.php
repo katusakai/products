@@ -11,13 +11,13 @@ class Config extends Model
         return intval(self::where('name','tax_rate')->first()->value);
     }
 
-    public static function getTaxInclusionFlag()
-    {
-        return self::where('name','tax_inclusion_flag')->first()->value;
-    }
-
     public static function getGlobalDiscount()
     {
         return intval(self::where('name','global_discount')->first()->value);
+    }
+
+    public static function ifShowWithTaxes()
+    {
+        return self::where('name','tax_inclusion_flag')->first()->value === '1' ? true : false;
     }
 }
