@@ -97,6 +97,7 @@
                     .get(this.routeIndex + '?page=' + page)
                     .then(response => {
                         this.products = response.data;
+                        this.round();
                         this.url = response.config.url;
                         this.unCheckAll()
                     })
@@ -191,6 +192,13 @@
                     }
                 }
                 return selectedCheckboxes
+            },
+
+            round(){
+                for(let i = 0; i < this.products.data.length; i++) {
+                    this.products.data[i].price = this.products.data[i].price.toFixed(2)
+                    this.products.data[i].discounted_price = this.products.data[i].discounted_price.toFixed(2)
+                }
             }
         }
     }

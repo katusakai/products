@@ -2036,6 +2036,9 @@ __webpack_require__.r(__webpack_exports__);
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.page;
       axios.get(this.routeIndex + '?page=' + page).then(function (response) {
         _this.products = response.data;
+
+        _this.round();
+
         _this.url = response.config.url;
 
         _this.unCheckAll();
@@ -2138,6 +2141,12 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return selectedCheckboxes;
+    },
+    round: function round() {
+      for (var i = 0; i < this.products.data.length; i++) {
+        this.products.data[i].price = this.products.data[i].price.toFixed(2);
+        this.products.data[i].discounted_price = this.products.data[i].discounted_price.toFixed(2);
+      }
     }
   }
 });
@@ -38907,14 +38916,19 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", [
-                _c("strong", [_vm._v("Price:")]),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.selectedProduct.price) +
-                    " €\n                "
-                )
-              ]),
+              _vm.selectedProduct.taxes_text
+                ? _c("div", [
+                    _c("strong", [_vm._v("Price:")]),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.selectedProduct.price) +
+                        " € "
+                    ),
+                    _c("small", [
+                      _vm._v(_vm._s(_vm.selectedProduct.taxes_text))
+                    ])
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("div", [
                 _c("img", {
