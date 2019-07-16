@@ -10654,5 +10654,6 @@ a.text-dark:focus {
 
 .card-toggler:hover {
   background-color: #e9ecef;
+  cursor: pointer;
 }
 
