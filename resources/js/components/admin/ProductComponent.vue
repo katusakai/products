@@ -5,23 +5,27 @@
                 <div class="border card-toggler" v-if="selectedProduct" @click="toggle">{{isActive ? 'Show Product' : 'Hide Product'}}</div>
                 <div class="d-block border p-2" v-if="selectedProduct && isActive">
                     <div>
-                        Product name:
-                        <strong>{{selectedProduct.name}}</strong>
+                        <strong>Product name:</strong>
+                        {{selectedProduct.name}}
                     </div>
                     <div>
-                        Product sku:
-                        <strong>{{selectedProduct.sku}}</strong>
+                        <strong>Product sku:</strong>
+                        {{selectedProduct.sku}}
                     </div>
                     <div>
-                        Status:
-                        <strong>{{(selectedProduct.status == 1 ? 'Enabled' : 'Disabled')}}</strong>
+                        <strong>Status:</strong>
+                        {{(selectedProduct.status == 1 ? 'Enabled' : 'Disabled')}}
                     </div>
                     <div>
-                        Price:
-                        <strong>{{selectedProduct.price}} €</strong>
+                        <strong>Price:</strong>
+                        {{selectedProduct.price}} €
                     </div>
                     <div>
                         <img :src="selectedProduct.images[0].image" alt="">
+                    </div>
+                    <div>
+                        <div><strong>Description</strong></div>
+                        <div>{{selectedProduct.description}}</div>
                     </div>
                 </div>
             </div>
