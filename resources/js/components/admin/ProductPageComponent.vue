@@ -16,8 +16,8 @@
                     class="border p-2"
                     :used-for="usedFor"
                     :default-value="product"
+                    :route-product-to-update="routeProductUpdate"
                 ></admin-product-form>
-                {{product}}
             </div>
         </div>
     </div>
@@ -26,7 +26,8 @@
 <script>
     export default {
         props: [
-            'routeProductShow'
+            'routeProductShow',
+            'routeProductUpdate'
         ],
         data: function () {
             return {

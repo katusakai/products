@@ -2080,7 +2080,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['usedFor', 'defaultValue'],
+  props: ['usedFor', 'defaultValue', 'routeProductUpdate'],
   data: function data() {
     return {
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
@@ -2097,6 +2097,12 @@ __webpack_require__.r(__webpack_exports__);
         case 'create':
           this.action = 'admin/product';
           this.method = 'POST';
+          break;
+
+        case 'update':
+          this.action = this.routeProductUpdate;
+          this.method = 'POST';
+        //todo should be 'PUT'
       }
     }
   }
@@ -2139,7 +2145,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['routeProductShow'],
+  props: ['routeProductShow', 'routeProductUpdate'],
   data: function data() {
     return {
       product: {},
@@ -39545,9 +39551,12 @@ var render = function() {
         [
           _c("admin-product-form", {
             staticClass: "border p-2",
-            attrs: { "used-for": _vm.usedFor, "default-value": _vm.product }
-          }),
-          _vm._v("\n            " + _vm._s(_vm.product) + "\n        ")
+            attrs: {
+              "used-for": _vm.usedFor,
+              "default-value": _vm.product,
+              "route-product-to-update": _vm.routeProductUpdate
+            }
+          })
         ],
         1
       )

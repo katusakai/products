@@ -8,6 +8,7 @@ use App\Aggregators\Products;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\ProductDiscount;
+use App\Validations\ProductValidation;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -44,13 +45,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|max:60',
-            'sku' => 'required',
-            'price' => 'required|numeric|min:0.01',
-            'description' => 'required',
-            'discount' => 'required|numeric|max:99|min:0'
-        ]);
+        $request->validate(ProductValidation::get());
 
         $product = new Product();
         $product->name = $request->name;
@@ -66,6 +61,25 @@ class ProductController extends Controller
         }
 
         return redirect(route('admin.products'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $request->validate(ProductValidation::get());
+
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->sku = $request->sku;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        if ($product->save()) {
+            $discount = ProductDiscount::where('product_id', $id)->first();
+            $discount->discount = $request->discount;
+
+            $discount->save();
+        }
+
+        return redirect(route('admin.product.update', ['id' => $id]));
     }
 
     public function destroy($id)

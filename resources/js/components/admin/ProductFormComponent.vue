@@ -56,7 +56,8 @@
     export default {
         props: [
             'usedFor',
-            'defaultValue'
+            'defaultValue',
+            'routeProductUpdate'
         ],
 
         data: () => ({
@@ -73,8 +74,12 @@
             setData() {
                 switch (this.usedFor) {
                     case 'create':
-                        this.action = 'admin/product'
-                        this.method = 'POST'
+                        this.action = 'admin/product';
+                        this.method = 'POST';
+                    break;
+                    case 'update':
+                        this.action = this.routeProductUpdate;
+                        this.method = 'POST'; //todo should be 'PUT'
                 }
             }
         }
