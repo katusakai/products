@@ -4,21 +4,26 @@
             <div class="table-responsive">
                 <pagination :data="products" :show-disabled="true" @pagination-change-page="getResults"></pagination>
             </div>
-            <div class="col-md-4 p-0">
-                <select class="form-control"
-                    v-model="selected"
-                >
-                    <option value="choose">Choose Action</option>
-                    <option value="delete">Delete</option>
-                    <option value="enable">Enable</option>
-                    <option value="disable">Disable</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-success" @click="selectedAction">Apply action</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Create
-                </button>
+            <div class="d-sm-flex">
+                <div class="pr-2 pb-2">
+                    <select class="form-control"
+                            v-model="selected"
+                    >
+                        <option value="choose">Choose Action</option>
+                        <option value="delete">Delete</option>
+                        <option value="enable">Enable</option>
+                        <option value="disable">Disable</option>
+                    </select>
+                </div>
+                <div class="pr-2 pb-2">
+                    <button class="btn btn-success" @click="selectedAction">Apply action</button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Create
+                    </button>
+                </div>
+
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover text-nowrap">

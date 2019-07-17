@@ -2131,6 +2131,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['routeIndex', 'page'],
   data: function data() {
@@ -39379,68 +39384,62 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-4 p-0" }, [
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.selected,
-                expression: "selected"
+      _c("div", { staticClass: "d-sm-flex" }, [
+        _c("div", { staticClass: "pr-2 pb-2" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selected,
+                  expression: "selected"
+                }
+              ],
+              staticClass: "form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selected = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
               }
-            ],
-            staticClass: "form-control",
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.selected = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
-              }
-            }
-          },
-          [
-            _c("option", { attrs: { value: "choose" } }, [
-              _vm._v("Choose Action")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "delete" } }, [_vm._v("Delete")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "enable" } }, [_vm._v("Enable")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "disable" } }, [_vm._v("Disable")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-4" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-success", on: { click: _vm.selectedAction } },
-          [_vm._v("Apply action")]
-        ),
+            },
+            [
+              _c("option", { attrs: { value: "choose" } }, [
+                _vm._v("Choose Action")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "delete" } }, [_vm._v("Delete")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "enable" } }, [_vm._v("Enable")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "disable" } }, [_vm._v("Disable")])
+            ]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary",
-            attrs: {
-              type: "button",
-              "data-toggle": "modal",
-              "data-target": "#exampleModal"
-            }
-          },
-          [_vm._v("\n                Create\n            ")]
-        )
+        _c("div", { staticClass: "pr-2 pb-2" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              on: { click: _vm.selectedAction }
+            },
+            [_vm._v("Apply action")]
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "table-responsive" }, [
@@ -39601,7 +39600,27 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#exampleModal"
+          }
+        },
+        [_vm._v("\n                    Create\n                ")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
