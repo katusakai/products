@@ -57,8 +57,10 @@
                             <td>
                                 <a class="text-primary" href="javascript:void(0)"
                                 @click="selectProduct(index)"
+                                >Peak</a>
+                                <a class="text-success pl-1"
+                                   :href="'admin/products/' + product.id"
                                 >View</a>
-                                <a class="text-success pl-1" href="javascript:void(0)">Edit</a>
                                 <a class="text-danger pl-1" href="javascript:void(0)"
                                 @click="destroySingle(product.id, index)">Delete</a>
 

@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="form-price" class="col-sm-2 col-form-label">Base Price</label>
+                <label for="form-price" class="col-sm-2 col-form-label text-nowrap">Base Price, €</label>
                 <div class="col-sm-10">
                     <input name="price" class="form-control" id="form-price" type="number" step="0.01" min="0.01" required
                        :value="defaultValue ? defaultValue.base_price : null"
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="form-discount" class="col-sm-2 col-form-label">Discount</label>
+                <label for="form-discount" class="col-sm-2 col-form-label text-nowrap">Discount, %</label>
                 <div class="col-sm-10">
                     <input name="discount" class="form-control" id="form-discount" type="number" max="99" min="0" required
                        :value="defaultValue ? defaultValue.discount.discount : null"

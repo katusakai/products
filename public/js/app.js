@@ -2262,6 +2262,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['routeIndex', 'page'],
   data: function data() {
@@ -39396,10 +39398,10 @@ var render = function() {
         _c(
           "label",
           {
-            staticClass: "col-sm-2 col-form-label",
+            staticClass: "col-sm-2 col-form-label text-nowrap",
             attrs: { for: "form-price" }
           },
-          [_vm._v("Base Price")]
+          [_vm._v("Base Price, €")]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "col-sm-10" }, [
@@ -39424,10 +39426,10 @@ var render = function() {
         _c(
           "label",
           {
-            staticClass: "col-sm-2 col-form-label",
+            staticClass: "col-sm-2 col-form-label text-nowrap",
             attrs: { for: "form-discount" }
           },
-          [_vm._v("Discount")]
+          [_vm._v("Discount, %")]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "col-sm-10" }, [
@@ -39742,16 +39744,16 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("View")]
+                      [_vm._v("Peak")]
                     ),
                     _vm._v(" "),
                     _c(
                       "a",
                       {
                         staticClass: "text-success pl-1",
-                        attrs: { href: "javascript:void(0)" }
+                        attrs: { href: "admin/products/" + product.id }
                       },
-                      [_vm._v("Edit")]
+                      [_vm._v("View")]
                     ),
                     _vm._v(" "),
                     _c(
