@@ -16,6 +16,9 @@
             </div>
             <div class="col-md-4">
                 <button class="btn btn-success" @click="selectedAction">Apply action</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Create
+                </button>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover text-nowrap">

@@ -11,7 +11,7 @@ class Products
 {
     public function get()
     {
-        $products = Product::paginate(15);
+        $products = Product::orderBy('created_at', 'desc')->paginate(15);
         foreach ($products as $key => $product) {
             $discount = intval($product->discount->discount);
 

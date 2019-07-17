@@ -1885,6 +1885,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['page', 'routeIndex'],
   data: function data() {
@@ -2036,6 +2051,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -38954,45 +38972,90 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("admin-product-create"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-md-8" },
-          [
-            _c("admin-products-table", {
-              attrs: { page: _vm.page, "route-index": _vm.routeIndex },
-              on: {
-                productSelected: function($event) {
-                  return _vm.productSelected($event)
-                }
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-8" },
+        [
+          _c("admin-products-table", {
+            attrs: { page: _vm.page, "route-index": _vm.routeIndex },
+            on: {
+              productSelected: function($event) {
+                return _vm.productSelected($event)
               }
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-md-4" },
+        [
+          _c("admin-product-card", {
+            attrs: { "selected-product": _vm.selectedProduct }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "exampleModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
         _c(
           "div",
-          { staticClass: "col-md-4" },
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
-            _c("admin-product-card", {
-              attrs: { "selected-product": _vm.selectedProduct }
-            })
-          ],
-          1
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body" },
+                [_c("admin-product-create")],
+                1
+              )
+            ])
+          ]
         )
-      ])
-    ],
-    1
-  )
+      ]
+    )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -39157,7 +39220,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-sm-10" }, [
         _c("input", {
           staticClass: "form-control",
-          attrs: { name: "name", id: "form-name", type: "text" }
+          attrs: { name: "name", id: "form-name", type: "text", required: "" }
         })
       ])
     ])
@@ -39176,7 +39239,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-sm-10" }, [
         _c("input", {
           staticClass: "form-control",
-          attrs: { name: "sku", id: "form-sku", type: "text" }
+          attrs: { name: "sku", id: "form-sku", type: "text", required: "" }
         })
       ])
     ])
@@ -39198,7 +39261,14 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-sm-10" }, [
         _c("input", {
           staticClass: "form-control",
-          attrs: { name: "price", id: "form-price", type: "text" }
+          attrs: {
+            name: "price",
+            id: "form-price",
+            type: "number",
+            step: "0.01",
+            min: "0.01",
+            required: ""
+          }
         })
       ])
     ])
@@ -39220,7 +39290,14 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-sm-10" }, [
         _c("input", {
           staticClass: "form-control",
-          attrs: { name: "discount", id: "form-discount", type: "text" }
+          attrs: {
+            name: "discount",
+            id: "form-discount",
+            type: "number",
+            max: "99",
+            min: "0",
+            required: ""
+          }
         })
       ])
     ])
@@ -39242,7 +39319,12 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-sm-10" }, [
         _c("input", {
           staticClass: "form-control",
-          attrs: { name: "description", id: "form-description", type: "text" }
+          attrs: {
+            name: "description",
+            id: "form-description",
+            type: "text",
+            required: ""
+          }
         })
       ])
     ])
@@ -39345,6 +39427,19 @@ var render = function() {
           "button",
           { staticClass: "btn btn-success", on: { click: _vm.selectedAction } },
           [_vm._v("Apply action")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: {
+              type: "button",
+              "data-toggle": "modal",
+              "data-target": "#exampleModal"
+            }
+          },
+          [_vm._v("\n                Create\n            ")]
         )
       ]),
       _vm._v(" "),

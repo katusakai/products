@@ -5,31 +5,31 @@
             <div class="form-group row">
                 <label for="form-name" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
-                    <input name="name" class="form-control" id="form-name" type="text">
+                    <input name="name" class="form-control" id="form-name" type="text" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="form-sku" class="col-sm-2 col-form-label">SKU</label>
                 <div class="col-sm-10">
-                    <input name="sku" class="form-control" id="form-sku" type="text">
+                    <input name="sku" class="form-control" id="form-sku" type="text" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="form-price" class="col-sm-2 col-form-label">Base Price</label>
                 <div class="col-sm-10">
-                    <input name="price" class="form-control" id="form-price" type="text">
+                    <input name="price" class="form-control" id="form-price" type="number" step="0.01" min="0.01" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="form-discount" class="col-sm-2 col-form-label">Discount</label>
                 <div class="col-sm-10">
-                    <input name="discount" class="form-control" id="form-discount" type="text">
+                    <input name="discount" class="form-control" id="form-discount" type="number" max="99" min="0" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="form-description" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
-                    <input name="description" class="form-control" id="form-description" type="text">
+                    <input name="description" class="form-control" id="form-description" type="text" required>
                 </div>
             </div>
             <div class="form-group row">

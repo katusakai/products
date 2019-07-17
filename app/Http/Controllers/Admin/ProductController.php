@@ -31,9 +31,9 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|max:60',
             'sku' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0.01',
             'description' => 'required',
-            'discount' => 'required|numeric'
+            'discount' => 'required|numeric|max:99|min:0'
         ]);
 
         $product = new Product();
@@ -41,13 +41,13 @@ class ProductController extends Controller
         $product->sku = $request->sku;
         $product->price = $request->price;
         $product->description = $request->description;
-        $product->save();
+        if ($product->save()) {
+            $discount = new ProductDiscount();
+            $discount->product_id = Product::latest()->first()->id;
+            $discount->discount = $request->discount;
 
-        $discount = new ProductDiscount();
-        $discount->product_id = Product::latest()->first()->id;
-        $discount->discount = $request->discount;
-
-        $discount->save();
+            $discount->save();
+        }
 
         return redirect(route('admin.products'));
     }
