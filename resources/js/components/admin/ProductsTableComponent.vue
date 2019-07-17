@@ -120,7 +120,10 @@
             keepResults() {
                 axios
                     .get(this.url)
-                    .then(response => (this.products = response.data))
+                    .then(response => {
+                        this.products = response.data;
+                        this.round();
+                    })
             },
 
             selectedAction() {
