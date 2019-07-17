@@ -13,13 +13,8 @@ class Products
     {
         $products = Product::orderBy('created_at', 'desc')->paginate($pages);
         foreach ($products as $key => $product) {
-            $discount = intval($product->discount->discount);
 
-            $product['price'] = $this->priceWithTaxes(floatval($product->price));
-            $product['discount'] = $discount;  //todo fix this. in php it dumps integer, but in json it dumps whole object from discount_table
-            $product['discounted_price'] = $this->priceCalculator($product['price'], $discount);
-            $this->taxesText($product);
-            $product['images'] = $product->images;
+            $this->agregate($product);
 
             $products[$key] = $product;
         }
@@ -30,16 +25,23 @@ class Products
     {
         $product = Product::find($id);
 
+        $this->agregate($product);
+
+        return $product;
+
+    }
+
+    private function agregate($product)
+    {
         $discount = intval($product->discount->discount);
 
-        $product['price'] = $this->priceWithTaxes(floatval($product->price));
+        $product['price'] = round($this->priceWithTaxes(floatval($product->price)), 2);
         $product['discount'] = $discount;  //todo fix this. in php it dumps integer, but in json it dumps whole object from discount_table
-        $product['discounted_price'] = $this->priceCalculator($product['price'], $discount);
+        $product['discounted_price'] = round($this->priceCalculator($product['price'], $discount), 2);
         $this->taxesText($product);
         $product['images'] = $product->images;
 
         return $product;
-
     }
 
     private function priceCalculator($price, $discount)

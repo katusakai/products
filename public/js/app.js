@@ -2213,9 +2213,6 @@ __webpack_require__.r(__webpack_exports__);
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.page;
       axios.get(this.routeIndex + '?page=' + page).then(function (response) {
         _this.products = response.data;
-
-        _this.round();
-
         _this.url = response.config.url;
 
         _this.unCheckAll();
@@ -2226,8 +2223,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get(this.url).then(function (response) {
         _this2.products = response.data;
-
-        _this2.round();
       });
     },
     selectedAction: function selectedAction() {
@@ -2320,12 +2315,6 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return selectedCheckboxes;
-    },
-    round: function round() {
-      for (var i = 0; i < this.products.data.length; i++) {
-        this.products.data[i].price = this.products.data[i].price.toFixed(2);
-        this.products.data[i].discounted_price = this.products.data[i].discounted_price.toFixed(2);
-      }
     }
   }
 });
