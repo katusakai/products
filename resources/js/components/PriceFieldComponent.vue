@@ -4,8 +4,8 @@
         <small v-if="taxesText">{{taxesText}}</small>
     </div>
     <div v-else>
-        {{discountedPrice}}
-        <del>€{{price}} €</del>
+        <span class="pr-1">{{discountedPrice}} €</span>
+        <del>{{price}} €</del>
         <small v-if="taxesText">{{taxesText}}</small>
     </div>
 </template>

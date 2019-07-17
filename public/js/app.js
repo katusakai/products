@@ -39093,8 +39093,11 @@ var render = function() {
         _vm.taxesText ? _c("small", [_vm._v(_vm._s(_vm.taxesText))]) : _vm._e()
       ])
     : _c("div", [
-        _vm._v("\n    " + _vm._s(_vm.discountedPrice) + "\n    "),
-        _c("del", [_vm._v("€" + _vm._s(_vm.price) + " €")]),
+        _c("span", { staticClass: "pr-1" }, [
+          _vm._v(_vm._s(_vm.discountedPrice) + " €")
+        ]),
+        _vm._v(" "),
+        _c("del", [_vm._v(_vm._s(_vm.price) + " €")]),
         _vm._v(" "),
         _vm.taxesText ? _c("small", [_vm._v(_vm._s(_vm.taxesText))]) : _vm._e()
       ])
@@ -39411,7 +39414,7 @@ var render = function() {
               required: ""
             },
             domProps: {
-              value: _vm.defaultValue ? _vm.defaultValue.price : null
+              value: _vm.defaultValue ? _vm.defaultValue.base_price : null
             }
           })
         ])

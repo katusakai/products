@@ -35,6 +35,7 @@ class Products
     {
         $discount = intval($product->discount->discount);
 
+        $product['base_price'] = round(floatval($product->price), 2);
         $product['price'] = round($this->priceWithTaxes(floatval($product->price)), 2);
         $product['discount'] = $discount;  //todo fix this. in php it dumps integer, but in json it dumps whole object from discount_table
         $product['discounted_price'] = round($this->priceCalculator($product['price'], $discount), 2);

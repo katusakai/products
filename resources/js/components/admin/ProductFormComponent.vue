@@ -22,7 +22,7 @@
                 <label for="form-price" class="col-sm-2 col-form-label">Base Price</label>
                 <div class="col-sm-10">
                     <input name="price" class="form-control" id="form-price" type="number" step="0.01" min="0.01" required
-                       :value="defaultValue ? defaultValue.price : null"
+                       :value="defaultValue ? defaultValue.base_price : null"
                     >
                 </div>
             </div>
