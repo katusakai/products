@@ -1901,7 +1901,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      usedFor: 'create'
+    };
+  }
+});
 
 /***/ }),
 
@@ -2061,10 +2069,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['usedFor', 'defaultValue'],
   data: function data() {
     return {
-      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      action: '',
+      method: ''
     };
+  },
+  mounted: function mounted() {
+    this.setData();
+  },
+  methods: {
+    setData: function setData() {
+      switch (this.usedFor) {
+        case 'create':
+          this.action = 'admin/product';
+          this.method = 'POST';
+      }
+    }
   }
 });
 
@@ -2097,11 +2120,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['routeProductShow'],
   data: function data() {
     return {
-      product: {}
+      product: {},
+      usedFor: 'edit'
     };
   },
   mounted: function mounted() {
@@ -39078,7 +39107,12 @@ var render = function() {
       _c("div", { staticClass: "modal-content" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c("div", { staticClass: "modal-body" }, [_c("admin-product-form")], 1)
+        _c(
+          "div",
+          { staticClass: "modal-body" },
+          [_c("admin-product-form", { attrs: { "used-for": _vm.usedFor } })],
+          1
+        )
       ])
     ])
   ])
@@ -39287,7 +39321,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("form", { attrs: { action: "admin/product", method: "POST" } }, [
+    _c("form", { attrs: { action: _vm.action, method: _vm.method } }, [
       _c("input", {
         attrs: { type: "hidden", name: "_token" },
         domProps: { value: _vm.csrf }
@@ -39480,7 +39514,13 @@ var render = function() {
           _vm._l(_vm.product.images, function(image) {
             return _c(
               "div",
-              [_c("image-thumbnail", { attrs: { src: image.image } })],
+              [
+                _c("image-thumbnail", { attrs: { src: image.image } }),
+                _vm._v(" "),
+                _c("image-thumbnail", { attrs: { src: image.image } }),
+                _vm._v(" "),
+                _c("image-thumbnail", { attrs: { src: image.image } })
+              ],
               1
             )
           })
@@ -39488,9 +39528,15 @@ var render = function() {
         2
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _vm._v("\n            " + _vm._s(_vm.product) + "\n        ")
-      ])
+      _c(
+        "div",
+        { staticClass: "col-md-6" },
+        [
+          _c("admin-product-form", { attrs: { "used-for": _vm.usedFor } }),
+          _vm._v("\n            " + _vm._s(_vm.product) + "\n        ")
+        ],
+        1
+      )
     ])
   ])
 }

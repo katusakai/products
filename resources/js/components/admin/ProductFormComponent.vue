@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form action="admin/product" method="POST">
+        <form :action="action" :method="method">
             <input type="hidden" name="_token" :value="csrf">
             <div class="form-group row">
                 <label for="form-name" class="col-sm-2 col-form-label">Name</label>
@@ -43,8 +43,29 @@
 
 <script>
     export default {
+        props: [
+            'usedFor',
+            'defaultValue'
+        ],
+
         data: () => ({
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            action: '',
+            method: ''
         }),
+
+        mounted() {
+            this.setData()
+        },
+
+        methods: {
+            setData() {
+                switch (this.usedFor) {
+                    case 'create':
+                        this.action = 'admin/product'
+                        this.method = 'POST'
+                }
+            }
+        }
     }
 </script>

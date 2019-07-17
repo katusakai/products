@@ -7,9 +7,14 @@
                 ></admin-product-card>
                 <div v-for="image in product.images">
                     <image-thumbnail :src="image.image"></image-thumbnail>
+                    <image-thumbnail :src="image.image"></image-thumbnail>
+                    <image-thumbnail :src="image.image"></image-thumbnail>
                 </div>
             </div>
             <div class="col-md-6">
+                <admin-product-form
+                    :used-for="usedFor"
+                ></admin-product-form>
                 {{product}}
             </div>
         </div>
@@ -23,7 +28,8 @@
         ],
         data: function () {
             return {
-                product: {}
+                product: {},
+                usedFor: 'edit'
             }
         },
 

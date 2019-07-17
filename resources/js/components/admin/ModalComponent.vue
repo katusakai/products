@@ -8,7 +8,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <admin-product-form></admin-product-form>
+                    <admin-product-form
+                        :used-for="usedFor"
+                    ></admin-product-form>
                 </div>
             </div>
         </div>
@@ -17,6 +19,10 @@
 
 <script>
     export default {
-
+        data: function() {
+            return {
+                usedFor: 'create'
+            }
+        }
     }
 </script>
