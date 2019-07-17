@@ -1,6 +1,18 @@
 <template>
-    <div>
-        {{product}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <admin-product-card
+                    :selected-product="product"
+                ></admin-product-card>
+                <div v-for="image in product.images">
+                    <image-thumbnail :src="image.image"></image-thumbnail>
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{product}}
+            </div>
+        </div>
     </div>
 </template>
 
