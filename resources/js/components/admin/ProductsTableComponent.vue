@@ -19,7 +19,7 @@
                     <button class="btn btn-success" @click="selectedAction">Apply action</button>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
                         Create
                     </button>
                 </div>

@@ -23,7 +23,8 @@ Vue.component('admin-products-parent', require('./components/admin/ParentProduct
 Vue.component('admin-products-table', require('./components/admin/ProductsTableComponent.vue').default);
 Vue.component('admin-product-card', require('./components/admin/ProductComponent').default);
 Vue.component('price-field', require('./components/PriceFieldComponent').default);
-Vue.component('admin-product-create', require('./components/admin/ProductCreateComponent').default);
+Vue.component('admin-product-form', require('./components/admin/ProductFormComponent').default);
+Vue.component('admin-modal', require('./components/admin/ModalComponent').default);
 
 Vue.component('pagination', require('laravel-vue-pagination'));
 
