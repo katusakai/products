@@ -13,7 +13,9 @@
             </div>
             <div class="col-md-6">
                 <admin-product-form
+                    class="border p-2"
                     :used-for="usedFor"
+                    :default-value="product"
                 ></admin-product-form>
                 {{product}}
             </div>
@@ -29,7 +31,7 @@
         data: function () {
             return {
                 product: {},
-                usedFor: 'edit'
+                usedFor: 'update'
             }
         },
 

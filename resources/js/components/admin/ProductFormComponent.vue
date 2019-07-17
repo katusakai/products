@@ -5,36 +5,47 @@
             <div class="form-group row">
                 <label for="form-name" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
-                    <input name="name" class="form-control" id="form-name" type="text" required>
+                    <input name="name" class="form-control" id="form-name" type="text" required
+                        :value="defaultValue ? defaultValue.name : null"
+                    >
                 </div>
             </div>
             <div class="form-group row">
                 <label for="form-sku" class="col-sm-2 col-form-label">SKU</label>
                 <div class="col-sm-10">
-                    <input name="sku" class="form-control" id="form-sku" type="text" required>
+                    <input name="sku" class="form-control" id="form-sku" type="text" required
+                       :value="defaultValue ? defaultValue.sku : null"
+                    >
                 </div>
             </div>
             <div class="form-group row">
                 <label for="form-price" class="col-sm-2 col-form-label">Base Price</label>
                 <div class="col-sm-10">
-                    <input name="price" class="form-control" id="form-price" type="number" step="0.01" min="0.01" required>
+                    <input name="price" class="form-control" id="form-price" type="number" step="0.01" min="0.01" required
+                       :value="defaultValue ? defaultValue.price : null"
+                    >
                 </div>
             </div>
             <div class="form-group row">
                 <label for="form-discount" class="col-sm-2 col-form-label">Discount</label>
                 <div class="col-sm-10">
-                    <input name="discount" class="form-control" id="form-discount" type="number" max="99" min="0" required>
+                    <input name="discount" class="form-control" id="form-discount" type="number" max="99" min="0" required
+                       :value="defaultValue ? defaultValue.discount.discount : null"
+                    >
+<!--                    todo fix this .discount.discount bug, because it is show undefined in console-->
                 </div>
             </div>
             <div class="form-group row">
                 <label for="form-description" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
-                    <input name="description" class="form-control" id="form-description" type="text" required>
+                    <textarea name="description"class="form-control" id="form-description" cols="30" rows="10">{{defaultValue ? defaultValue.description : null}}</textarea>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">
+                        {{usedFor === 'create' ? 'Create' : 'Update'}}
+                    </button>
                 </div>
             </div>
         </form>

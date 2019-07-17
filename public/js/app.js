@@ -2068,6 +2068,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['usedFor', 'defaultValue'],
   data: function data() {
@@ -2125,12 +2136,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['routeProductShow'],
   data: function data() {
     return {
       product: {},
-      usedFor: 'edit'
+      usedFor: 'update'
     };
   },
   mounted: function mounted() {
@@ -39327,159 +39340,157 @@ var render = function() {
         domProps: { value: _vm.csrf }
       }),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "form-group row" }, [
+        _c(
+          "label",
+          {
+            staticClass: "col-sm-2 col-form-label",
+            attrs: { for: "form-name" }
+          },
+          [_vm._v("Name")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-10" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "name",
+              id: "form-name",
+              type: "text",
+              required: ""
+            },
+            domProps: { value: _vm.defaultValue ? _vm.defaultValue.name : null }
+          })
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "form-group row" }, [
+        _c(
+          "label",
+          {
+            staticClass: "col-sm-2 col-form-label",
+            attrs: { for: "form-sku" }
+          },
+          [_vm._v("SKU")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-10" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { name: "sku", id: "form-sku", type: "text", required: "" },
+            domProps: { value: _vm.defaultValue ? _vm.defaultValue.sku : null }
+          })
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", { staticClass: "form-group row" }, [
+        _c(
+          "label",
+          {
+            staticClass: "col-sm-2 col-form-label",
+            attrs: { for: "form-price" }
+          },
+          [_vm._v("Base Price")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-10" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "price",
+              id: "form-price",
+              type: "number",
+              step: "0.01",
+              min: "0.01",
+              required: ""
+            },
+            domProps: {
+              value: _vm.defaultValue ? _vm.defaultValue.price : null
+            }
+          })
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(3),
+      _c("div", { staticClass: "form-group row" }, [
+        _c(
+          "label",
+          {
+            staticClass: "col-sm-2 col-form-label",
+            attrs: { for: "form-discount" }
+          },
+          [_vm._v("Discount")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-10" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              name: "discount",
+              id: "form-discount",
+              type: "number",
+              max: "99",
+              min: "0",
+              required: ""
+            },
+            domProps: {
+              value: _vm.defaultValue
+                ? _vm.defaultValue.discount.discount
+                : null
+            }
+          })
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(4),
+      _c("div", { staticClass: "form-group row" }, [
+        _c(
+          "label",
+          {
+            staticClass: "col-sm-2 col-form-label",
+            attrs: { for: "form-description" }
+          },
+          [_vm._v("Description")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-10" }, [
+          _c(
+            "textarea",
+            {
+              staticClass: "form-control",
+              attrs: {
+                name: "description",
+                id: "form-description",
+                cols: "30",
+                rows: "10"
+              }
+            },
+            [
+              _vm._v(
+                _vm._s(_vm.defaultValue ? _vm.defaultValue.description : null)
+              )
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(5)
+      _c("div", { staticClass: "form-group row" }, [
+        _c("div", { staticClass: "col-sm-10" }, [
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+            [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm.usedFor === "create" ? "Create" : "Update") +
+                  "\n                    "
+              )
+            ]
+          )
+        ])
+      ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        { staticClass: "col-sm-2 col-form-label", attrs: { for: "form-name" } },
-        [_vm._v("Name")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { name: "name", id: "form-name", type: "text", required: "" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        { staticClass: "col-sm-2 col-form-label", attrs: { for: "form-sku" } },
-        [_vm._v("SKU")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { name: "sku", id: "form-sku", type: "text", required: "" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-sm-2 col-form-label",
-          attrs: { for: "form-price" }
-        },
-        [_vm._v("Base Price")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            name: "price",
-            id: "form-price",
-            type: "number",
-            step: "0.01",
-            min: "0.01",
-            required: ""
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-sm-2 col-form-label",
-          attrs: { for: "form-discount" }
-        },
-        [_vm._v("Discount")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            name: "discount",
-            id: "form-discount",
-            type: "number",
-            max: "99",
-            min: "0",
-            required: ""
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-sm-2 col-form-label",
-          attrs: { for: "form-description" }
-        },
-        [_vm._v("Description")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            name: "description",
-            id: "form-description",
-            type: "text",
-            required: ""
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-sm-10" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("Create")]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39532,7 +39543,10 @@ var render = function() {
         "div",
         { staticClass: "col-md-6" },
         [
-          _c("admin-product-form", { attrs: { "used-for": _vm.usedFor } }),
+          _c("admin-product-form", {
+            staticClass: "border p-2",
+            attrs: { "used-for": _vm.usedFor, "default-value": _vm.product }
+          }),
           _vm._v("\n            " + _vm._s(_vm.product) + "\n        ")
         ],
         1
