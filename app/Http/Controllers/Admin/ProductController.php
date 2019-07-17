@@ -52,6 +52,7 @@ class ProductController extends Controller
         $product->sku = $request->sku;
         $product->price = $request->price;
         $product->description = $request->description;
+        $product->status = $request->status ?  1 : 0;
         if ($product->save()) {
             $discount = new ProductDiscount();
             $discount->product_id = Product::latest()->first()->id;
@@ -72,6 +73,7 @@ class ProductController extends Controller
         $product->sku = $request->sku;
         $product->price = $request->price;
         $product->description = $request->description;
+        $product->status = $request->status ?  1 : 0;
         if ($product->save()) {
             $discount = ProductDiscount::where('product_id', $id)->first();
             $discount->discount = $request->discount;

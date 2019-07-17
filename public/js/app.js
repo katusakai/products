@@ -2079,6 +2079,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['usedFor', 'defaultValue', 'routeProductUpdate'],
   data: function data() {
@@ -39355,13 +39372,13 @@ var render = function() {
         _c(
           "label",
           {
-            staticClass: "col-sm-2 col-form-label",
+            staticClass: "col-sm-3 col-form-label",
             attrs: { for: "form-name" }
           },
           [_vm._v("Name")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-10" }, [
+        _c("div", { staticClass: "col-sm-9" }, [
           _c("input", {
             staticClass: "form-control",
             attrs: {
@@ -39379,13 +39396,13 @@ var render = function() {
         _c(
           "label",
           {
-            staticClass: "col-sm-2 col-form-label",
+            staticClass: "col-sm-3 col-form-label",
             attrs: { for: "form-sku" }
           },
           [_vm._v("SKU")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-10" }, [
+        _c("div", { staticClass: "col-sm-9" }, [
           _c("input", {
             staticClass: "form-control",
             attrs: { name: "sku", id: "form-sku", type: "text", required: "" },
@@ -39398,13 +39415,13 @@ var render = function() {
         _c(
           "label",
           {
-            staticClass: "col-sm-2 col-form-label text-nowrap",
+            staticClass: "col-sm-3 col-form-label text-nowrap",
             attrs: { for: "form-price" }
           },
           [_vm._v("Base Price, €")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-10" }, [
+        _c("div", { staticClass: "col-sm-9" }, [
           _c("input", {
             staticClass: "form-control",
             attrs: {
@@ -39426,13 +39443,13 @@ var render = function() {
         _c(
           "label",
           {
-            staticClass: "col-sm-2 col-form-label text-nowrap",
+            staticClass: "col-sm-3 col-form-label text-nowrap",
             attrs: { for: "form-discount" }
           },
           [_vm._v("Discount, %")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-10" }, [
+        _c("div", { staticClass: "col-sm-9" }, [
           _c("input", {
             staticClass: "form-control",
             attrs: {
@@ -39444,9 +39461,7 @@ var render = function() {
               required: ""
             },
             domProps: {
-              value: _vm.defaultValue
-                ? _vm.defaultValue.discount.discount
-                : null
+              value: _vm.defaultValue ? _vm.defaultValue.discount.discount : 0
             }
           })
         ])
@@ -39456,13 +39471,13 @@ var render = function() {
         _c(
           "label",
           {
-            staticClass: "col-sm-2 col-form-label",
+            staticClass: "col-sm-3 col-form-label",
             attrs: { for: "form-description" }
           },
           [_vm._v("Description")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-10" }, [
+        _c("div", { staticClass: "col-sm-9" }, [
           _c(
             "textarea",
             {
@@ -39484,7 +39499,47 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group row" }, [
-        _c("div", { staticClass: "col-sm-10" }, [
+        _c(
+          "label",
+          {
+            staticClass: "col-sm-3 col-form-label text-nowrap",
+            attrs: { for: "form-status" }
+          },
+          [_vm._v("Status")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-9" }, [
+          _c("div", { staticClass: "custom-control custom-switch pt-1" }, [
+            _c("input", {
+              staticClass: "custom-control-input",
+              attrs: {
+                name: "status",
+                type: "checkbox",
+                id: "form-status",
+                value: "1"
+              },
+              domProps: {
+                checked:
+                  _vm.defaultValue && _vm.defaultValue.status == 1
+                    ? true
+                    : false
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "custom-control-label",
+                attrs: { for: "form-status" }
+              },
+              [_vm._v("Disabled/Enabled")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group row" }, [
+        _c("div", { staticClass: "col-sm-9" }, [
           _c(
             "button",
             { staticClass: "btn btn-primary", attrs: { type: "submit" } },
