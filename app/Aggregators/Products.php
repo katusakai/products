@@ -61,7 +61,7 @@ class Products
     }
 
     private function taxesText($product) {
-        if (Config::ifShowWithTaxes()){
+        if (Config::ifShowWithTaxes() && Config::getTaxRate()){
             $product['taxes_text'] = ' including VAT';
         }
         return $product;
