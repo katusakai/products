@@ -16,9 +16,11 @@
             ></price-field-component>
         </div>
         <div>
-            <image-thumbnail-component
-                :src="product.images[0].image"
-            ></image-thumbnail-component>
+            <a :href="this.urlToProduct">
+                <image-thumbnail-component
+                        :src="product.images[0].image"
+                ></image-thumbnail-component>
+            </a>
         </div>
     </div>
 </template>
@@ -30,6 +32,12 @@
         components: {ImageThumbnailComponent, PriceFieldComponent},
         props: [
             'product',
-        ]
+        ],
+
+        data: function () {
+            return {
+                urlToProduct: 'products/' + this.product.id
+            }
+        }
     }
 </script>

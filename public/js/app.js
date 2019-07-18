@@ -1982,6 +1982,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1989,7 +1991,12 @@ __webpack_require__.r(__webpack_exports__);
     ImageThumbnailComponent: _ImageThumbnailComponent__WEBPACK_IMPORTED_MODULE_1__["default"],
     PriceFieldComponent: _PriceFieldComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: ['product']
+  props: ['product'],
+  data: function data() {
+    return {
+      urlToProduct: 'products/' + this.product.id
+    };
+  }
 });
 
 /***/ }),
@@ -39594,15 +39601,18 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c(
-      "div",
-      [
-        _c("image-thumbnail-component", {
-          attrs: { src: _vm.product.images[0].image }
-        })
-      ],
-      1
-    )
+    _c("div", [
+      _c(
+        "a",
+        { attrs: { href: this.urlToProduct } },
+        [
+          _c("image-thumbnail-component", {
+            attrs: { src: _vm.product.images[0].image }
+          })
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = []
