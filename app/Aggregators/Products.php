@@ -50,7 +50,7 @@ class Products
     {
         foreach ($images as $image) {
             if (UrlParser::ifLocal($image->image)) {
-                $image->image = public_path() . '/uploads/' . $image->image;
+                $image->image = '/uploads/' . $image->image;
             }
         }
         return $images;
