@@ -27,6 +27,8 @@ Vue.component('admin-modal', require('./components/admin/ModalComponent').defaul
 
 Vue.component('admin-product-page', require('./components/admin/ProductPageComponent').default);
 
+Vue.component('admin-image-upload-form', require('./components/admin/ImageUploadFormComponent').default);
+
 
 Vue.component('price-field', require('./components/PriceFieldComponent').default);
 Vue.component('image-thumbnail', require('./components/ImageThumbnailComponent').default);

@@ -29,4 +29,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('admin/config', 'Admin\ConfigController@index')->name('admin.config.index');
     Route::get('admin/config/configs', 'Admin\ConfigController@indexJson')->name('admin.config.indexJson');
     Route::post('admin/config/configs', 'Admin\ConfigController@update')->name('admin.configs.update');  //todo shoud be PUT
+
+    Route::post('admin/image/{product}', 'Admin\ImageController@store')->name('admin.image.store');
 });

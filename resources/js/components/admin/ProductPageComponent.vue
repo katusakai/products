@@ -5,9 +5,12 @@
                 <admin-product-card
                     :selected-product="product"
                 ></admin-product-card>
-                <div v-for="image in product.images">
-                    <image-thumbnail :src="image.image"></image-thumbnail>
-                    <image-thumbnail :src="image.image"></image-thumbnail>
+                <div class="pt-2">
+                    <admin-image-upload-form
+                        :route-image-upload="routeImageUpload"
+                    ></admin-image-upload-form>
+                </div>
+                <div class="pt-2" v-for="image in product.images">
                     <image-thumbnail :src="image.image"></image-thumbnail>
                 </div>
             </div>
@@ -31,7 +34,8 @@
             'routeProductShow',
             'routeProductUpdate',
             'routeProductDestroy',
-            'routeRedirect'
+            'routeRedirect',
+            'routeImageUpload'
         ],
         data: function () {
             return {
