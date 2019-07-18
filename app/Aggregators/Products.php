@@ -6,13 +6,27 @@ namespace App\Aggregators;
 
 use App\Config;
 use App\Helpers\UrlParser;
+use App\Image;
 use App\Product;
 
 class Products
 {
-    public function getSome($pages)
+    public function getSomeAdmin($pages)
     {
         $products = Product::orderBy('created_at', 'desc')->paginate($pages);
+        foreach ($products as $key => $product) {
+
+            $this->agregate($product);
+
+            $products[$key] = $product;
+        }
+        return $products;
+    }
+
+    public function getSomeClient($pages)
+    {
+        $imagesIds = Image::all()->pluck('product.id');
+        $products = Product::where('status', 1)->whereIn('id', $imagesIds)->orderBy('created_at', 'desc')->paginate($pages);
         foreach ($products as $key => $product) {
 
             $this->agregate($product);
@@ -29,8 +43,8 @@ class Products
         $this->agregate($product);
 
         return $product;
-
     }
+
 
     private function agregate($product)
     {

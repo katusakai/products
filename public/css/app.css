@@ -10644,10 +10644,6 @@ a.text-dark:focus {
   }
 }
 
-.product-card {
-  min-width: 318px;
-}
-
 .card-toggler {
   text-align: center;
 }
@@ -10655,5 +10651,18 @@ a.text-dark:focus {
 .card-toggler:hover {
   background-color: #e9ecef;
   cursor: pointer;
+}
+
+.product-thumbnail {
+  white-space: nowrap;
+  padding: 10px;
+}
+
+.img-thumbnail {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
 }
 

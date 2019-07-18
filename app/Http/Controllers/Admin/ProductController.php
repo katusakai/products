@@ -21,7 +21,7 @@ class ProductController extends Controller
     public function indexJson()
     {
         $products = new Products;
-        $products = $products->getSome(15);
+        $products = $products->getSomeAdmin(15);
         return response()->json(
             $products
         );
@@ -39,7 +39,6 @@ class ProductController extends Controller
         $singleProduct = $singleProduct->getOne($product);
         return response()->json(
             $singleProduct
-
         );
     }
 

@@ -10,9 +10,13 @@
                         :route-image-upload="routeImageUpload"
                     ></admin-image-upload-form>
                 </div>
-                <div class="pt-2" v-for="image in product.images">
-                    <image-thumbnail :src="image.image"></image-thumbnail>
+
+                <div class="row pt-5">
+                    <div class="col-4 pb-4" v-for="image in product.images">
+                        <image-thumbnail :src="image.image"></image-thumbnail>
+                    </div>
                 </div>
+
             </div>
             <div class="col-md-6">
                 <admin-product-form

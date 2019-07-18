@@ -1,5 +1,5 @@
 .product-card {
-  min-width: 318px;
+  //min-width: 318px;
 }
 
 .card-toggler {
@@ -9,4 +9,9 @@
 .card-toggler:hover {
   background-color: #e9ecef;
   cursor: pointer;
+}
+
+.product-thumbnail {
+  white-space: nowrap;
+  padding: 10px;
 }

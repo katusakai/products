@@ -1,6 +1,6 @@
 <template>
-    <div class="d-block product-card">
-        <div class="d-block border p-2" v-if="selectedProduct && isActive">
+    <div class="row product-card">
+        <div class="col-sm-12 border p-2" v-if="selectedProduct && isActive">
             <div>
                 <strong>Product name:</strong>
                 {{selectedProduct.name}}
@@ -25,10 +25,13 @@
                 <div><strong>Description</strong></div>
                 <div>{{selectedProduct.description}}</div>
             </div>
+            <div>
                 <image-thumbnail
                         v-if="imageShow && selectedProduct.images[0]"
                         :src="selectedProduct.images[0].image"
                 ></image-thumbnail>
+            </div>
+
         </div>
     </div>
 </template>

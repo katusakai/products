@@ -1,14 +1,14 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <admin-products-table
                         @productSelected="productSelected($event)"
                         :page="page"
                         :route-index="routeIndex"
                 ></admin-products-table>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <admin-product-card
                         :selected-product="selectedProduct"
                         :image-show="true"
