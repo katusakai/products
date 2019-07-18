@@ -20,13 +20,18 @@ class ProductController extends Controller
     public function show($product)
     {
         $product = Product::find($product);
+
+        if ($product->status == '0' || $product->images->isEmpty()) {
+            return abort(404);
+        }
         return view('product', compact('product'));
     }
 
     public function showJson($product)
     {
         $singleProduct = new Products();
-        $singleProduct = $singleProduct->getOneClient($product);
+        $singleProduct = $singleProduct->getOne($product);
+
         return response()->json(
             $singleProduct
         );

@@ -37,7 +37,7 @@ Vue.component('configs', require('./components/config/ConfigsComponent').default
 
 Vue.component('products-for-clients', require('./components/ProductsForClientsComponent').default);
 Vue.component('product-card-for-clients', require('./components/ProductCardForClientsComponent').default);
-Vue.component('product-page-for-clients', require('./components/ProductPageForClientsComponent').default);
+Vue.component('product-page-for-clients', require('./components/IndividualProductPageForClientsComponent').default);
 
 Vue.component('pagination', require('laravel-vue-pagination'));
 

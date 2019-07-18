@@ -36,7 +36,7 @@ class ProductController extends Controller
     public function showJson($product)
     {
         $singleProduct = new Products();
-        $singleProduct = $singleProduct->getOneAdmin($product);
+        $singleProduct = $singleProduct->getOne($product);
         return response()->json(
             $singleProduct
         );
