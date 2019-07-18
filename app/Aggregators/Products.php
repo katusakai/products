@@ -36,14 +36,22 @@ class Products
         return $products;
     }
 
-    public function getOne($id)
+    public function getOneAdmin($id)
     {
         $product = Product::find($id);
 
         $this->agregate($product);
 
         return $product;
+    }
 
+    public function getOneClient($id)
+    {
+        $product = Product::find($id);
+
+        $this->agregate($product);
+
+        return $product;
     }
 
     private function agregate($product)
