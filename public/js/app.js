@@ -2053,6 +2053,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['selectedProduct', 'imageShow'],
   data: function data() {
@@ -39490,72 +39493,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "d-block product-card" }, [
+  return _c("div", { staticClass: "row product-card" }, [
     _vm.selectedProduct && _vm.isActive
-      ? _c(
-          "div",
-          { staticClass: "d-block border p-2" },
-          [
-            _c("div", [
-              _c("strong", [_vm._v("Product name:")]),
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.selectedProduct.name) +
-                  "\n        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("strong", [_vm._v("Product sku:")]),
-              _vm._v(
-                "\n            " +
-                  _vm._s(_vm.selectedProduct.sku) +
-                  "\n        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("strong", [_vm._v("Status:")]),
-              _vm._v(
-                "\n            " +
-                  _vm._s(
-                    _vm.selectedProduct.status == 1 ? "Enabled" : "Disabled"
-                  ) +
-                  "\n        "
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "d-flex" },
-              [
-                _c("strong", { staticClass: "pr-1" }, [_vm._v("Price:")]),
-                _vm._v(" "),
-                _c("price-field", {
-                  attrs: {
-                    price: _vm.selectedProduct.price,
-                    "discounted-price": _vm.selectedProduct.discounted_price,
-                    "taxes-text": _vm.selectedProduct.taxes_text
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("div", [
-              _vm._m(0),
+      ? _c("div", { staticClass: "col-sm-12 border p-2" }, [
+          _c("div", [
+            _c("strong", [_vm._v("Product name:")]),
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.selectedProduct.name) +
+                "\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("strong", [_vm._v("Product sku:")]),
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.selectedProduct.sku) +
+                "\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c("strong", [_vm._v("Status:")]),
+            _vm._v(
+              "\n                " +
+                _vm._s(
+                  _vm.selectedProduct.status == 1 ? "Enabled" : "Disabled"
+                ) +
+                "\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "d-flex" },
+            [
+              _c("strong", { staticClass: "pr-1" }, [_vm._v("Price:")]),
               _vm._v(" "),
-              _c("div", [_vm._v(_vm._s(_vm.selectedProduct.description))])
-            ]),
+              _c("price-field", {
+                attrs: {
+                  price: _vm.selectedProduct.price,
+                  "discounted-price": _vm.selectedProduct.discounted_price,
+                  "taxes-text": _vm.selectedProduct.taxes_text
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", [
+            _vm._m(0),
             _vm._v(" "),
-            _vm.imageShow && _vm.selectedProduct.images[0]
-              ? _c("image-thumbnail", {
-                  attrs: { src: _vm.selectedProduct.images[0].image }
-                })
-              : _vm._e()
-          ],
-          1
-        )
+            _c("div", [_vm._v(_vm._s(_vm.selectedProduct.description))])
+          ]),
+          _vm._v(" "),
+          _c("div")
+        ])
       : _vm._e()
   ])
 }
