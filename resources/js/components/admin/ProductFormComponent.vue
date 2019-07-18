@@ -59,10 +59,14 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-sm-9">
+                <div class="col-sm-12 d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary">
                         {{usedFor === 'create' ? 'Create' : 'Update'}}
                     </button>
+                    <button class="btn btn-danger"
+                        v-if="routeProductDestroy"
+                        @click="deleteProduct"
+                    >Delete</button>
                 </div>
             </div>
         </form>
@@ -74,7 +78,9 @@
         props: [
             'usedFor',
             'defaultValue',
-            'routeProductUpdate'
+            'routeProductUpdate',
+            'routeProductDestroy',
+            'routeRedirect'
         ],
 
         data: () => ({
@@ -98,6 +104,14 @@
                         this.action = this.routeProductUpdate;
                         this.method = 'POST'; //todo should be 'PUT'
                 }
+            },
+
+            deleteProduct() {
+                axios
+                    .delete(this.routeProductDestroy)
+                    .then(response => {
+                        window.location = this.routeRedirect
+                    })
             }
         }
     }

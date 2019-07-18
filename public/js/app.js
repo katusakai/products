@@ -2096,8 +2096,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['usedFor', 'defaultValue', 'routeProductUpdate'],
+  props: ['usedFor', 'defaultValue', 'routeProductUpdate', 'routeProductDestroy', 'routeRedirect'],
   data: function data() {
     return {
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
@@ -2121,6 +2125,13 @@ __webpack_require__.r(__webpack_exports__);
           this.method = 'POST';
         //todo should be 'PUT'
       }
+    },
+    deleteProduct: function deleteProduct() {
+      var _this = this;
+
+      axios["delete"](this.routeProductDestroy).then(function (response) {
+        window.location = _this.routeRedirect;
+      });
     }
   }
 });
@@ -2161,8 +2172,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['routeProductShow', 'routeProductUpdate'],
+  props: ['routeProductShow', 'routeProductUpdate', 'routeProductDestroy', 'routeRedirect'],
   data: function data() {
     return {
       product: {},
@@ -39632,7 +39645,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group row" }, [
-        _c("div", { staticClass: "col-sm-9" }, [
+        _c("div", { staticClass: "col-sm-12 d-flex justify-content-between" }, [
           _c(
             "button",
             { staticClass: "btn btn-primary", attrs: { type: "submit" } },
@@ -39643,7 +39656,18 @@ var render = function() {
                   "\n                    "
               )
             ]
-          )
+          ),
+          _vm._v(" "),
+          _vm.routeProductDestroy
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  on: { click: _vm.deleteProduct }
+                },
+                [_vm._v("Delete")]
+              )
+            : _vm._e()
         ])
       ])
     ])
@@ -39707,7 +39731,9 @@ var render = function() {
             attrs: {
               "used-for": _vm.usedFor,
               "default-value": _vm.product,
-              "route-product-to-update": _vm.routeProductUpdate
+              "route-product-to-update": _vm.routeProductUpdate,
+              "route-product-destroy": _vm.routeProductDestroy,
+              "route-redirect": _vm.routeRedirect
             }
           })
         ],

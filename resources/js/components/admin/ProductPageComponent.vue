@@ -17,6 +17,8 @@
                     :used-for="usedFor"
                     :default-value="product"
                     :route-product-to-update="routeProductUpdate"
+                    :route-product-destroy="routeProductDestroy"
+                    :route-redirect="routeRedirect"
                 ></admin-product-form>
             </div>
         </div>
@@ -27,7 +29,9 @@
     export default {
         props: [
             'routeProductShow',
-            'routeProductUpdate'
+            'routeProductUpdate',
+            'routeProductDestroy',
+            'routeRedirect'
         ],
         data: function () {
             return {
