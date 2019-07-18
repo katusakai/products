@@ -32,3 +32,5 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
     Route::post('admin/image/{product}', 'Admin\ImageController@store')->name('admin.image.store');
 });
+
+Route::get('/products', 'ProductController@indexJson')->name('products.index');

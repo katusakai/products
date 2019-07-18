@@ -35,6 +35,9 @@ Vue.component('image-thumbnail', require('./components/ImageThumbnailComponent')
 
 Vue.component('configs', require('./components/config/ConfigsComponent').default);
 
+Vue.component('products-for-clients', require('./components/ProductsForClientsComponent').default);
+Vue.component('product-card-for-clients', require('./components/ProductCardForClientsComponent').default);
+
 Vue.component('pagination', require('laravel-vue-pagination'));
 
 /**
