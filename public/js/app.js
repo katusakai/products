@@ -39658,12 +39658,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
+    { staticClass: "container-fluid" },
     [
       _c("div", { staticClass: "row" }, [
         _c(
           "div",
-          { staticClass: "col-md-9" },
+          { staticClass: "col-md-10" },
           [
             _c("admin-products-table", {
               attrs: { page: _vm.page, "route-index": _vm.routeIndex },
@@ -39679,7 +39679,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-md-3" },
+          { staticClass: "col-md-2" },
           [
             _c("admin-product-card", {
               attrs: {

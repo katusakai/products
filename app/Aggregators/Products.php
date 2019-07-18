@@ -6,6 +6,7 @@ namespace App\Aggregators;
 
 use App\Config;
 use App\Helpers\UrlParser;
+use App\Image;
 use App\Product;
 
 class Products
@@ -24,7 +25,8 @@ class Products
 
     public function getSomeClient($pages)
     {
-        $products = Product::where('status', 1)->orderBy('created_at', 'desc')->paginate($pages);
+        $imagesIds = Image::all()->pluck('product.id');
+        $products = Product::where('status', 1)->whereIn('id', $imagesIds)->orderBy('created_at', 'desc')->paginate($pages);
         foreach ($products as $key => $product) {
 
             $this->agregate($product);
