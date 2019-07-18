@@ -50,7 +50,7 @@
                 <label for="form-status" class="col-sm-3 col-form-label text-nowrap">Status</label>
                 <div class="col-sm-9">
                     <div class="custom-control custom-switch pt-1">
-                        <input name="status" type="checkbox" class="custom-control-input" id="form-status" value="1"
+                        <input name="status" type="checkbox" class="custom-control-input" id="form-status"
                         :checked=" defaultValue && defaultValue.status == 1 ? true : false"
                         >
                         <label class="custom-control-label" for="form-status">Disabled/Enabled</label>

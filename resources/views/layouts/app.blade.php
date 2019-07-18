@@ -42,6 +42,9 @@
                                 <a class="dropdown-item" href="{{ route('admin.products') }}">
                                 Products
                                 </a>
+                                <a class="dropdown-item" href="{{ route('admin.config.index') }}">
+                                    Global Configurations
+                                </a>
                             </div>
                         </li>
                     </ul>

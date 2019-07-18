@@ -25,4 +25,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::post('admin/products/{id}', 'Admin\ProductController@update')->name('admin.product.update');  //todo shoud be PUT
     Route::put('admin/product/{id}/{value}', 'Admin\ProductController@changeStatus')->name('admin.product.change.status');
     Route::post('admin/product', 'Admin\ProductController@store')->name('admin.product.store');
+
+    Route::get('admin/config', 'Admin\ConfigController@index')->name('admin.config.index');
+    Route::get('admin/config/configs', 'Admin\ConfigController@indexJson')->name('admin.config.indexJson');
+    Route::post('admin/config/configs', 'Admin\ConfigController@update')->name('admin.configs.update');  //todo shoud be PUT
 });

@@ -31,6 +31,8 @@ Vue.component('admin-product-page', require('./components/admin/ProductPageCompo
 Vue.component('price-field', require('./components/PriceFieldComponent').default);
 Vue.component('image-thumbnail', require('./components/ImageThumbnailComponent').default);
 
+Vue.component('configs', require('./components/config/ConfigsComponent').default);
+
 Vue.component('pagination', require('laravel-vue-pagination'));
 
 /**
