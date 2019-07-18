@@ -2228,6 +2228,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['routeProductShow', 'routeProductUpdate', 'routeProductDestroy', 'routeRedirect', 'routeImageUpload'],
   data: function data() {
@@ -39499,29 +39503,25 @@ var render = function() {
           _c("div", [
             _c("strong", [_vm._v("Product name:")]),
             _vm._v(
-              "\n                " +
-                _vm._s(_vm.selectedProduct.name) +
-                "\n            "
+              "\n            " + _vm._s(_vm.selectedProduct.name) + "\n        "
             )
           ]),
           _vm._v(" "),
           _c("div", [
             _c("strong", [_vm._v("Product sku:")]),
             _vm._v(
-              "\n                " +
-                _vm._s(_vm.selectedProduct.sku) +
-                "\n            "
+              "\n            " + _vm._s(_vm.selectedProduct.sku) + "\n        "
             )
           ]),
           _vm._v(" "),
           _c("div", [
             _c("strong", [_vm._v("Status:")]),
             _vm._v(
-              "\n                " +
+              "\n            " +
                 _vm._s(
                   _vm.selectedProduct.status == 1 ? "Enabled" : "Disabled"
                 ) +
-                "\n            "
+                "\n        "
             )
           ]),
           _vm._v(" "),
@@ -39548,7 +39548,17 @@ var render = function() {
             _c("div", [_vm._v(_vm._s(_vm.selectedProduct.description))])
           ]),
           _vm._v(" "),
-          _c("div")
+          _c(
+            "div",
+            [
+              _vm.imageShow && _vm.selectedProduct.images[0]
+                ? _c("image-thumbnail", {
+                    attrs: { src: _vm.selectedProduct.images[0].image }
+                  })
+                : _vm._e()
+            ],
+            1
+          )
         ])
       : _vm._e()
   ])
@@ -39826,16 +39836,21 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _vm._l(_vm.product.images, function(image) {
-            return _c(
-              "div",
-              { staticClass: "pt-2" },
-              [_c("image-thumbnail", { attrs: { src: image.image } })],
-              1
-            )
-          })
+          _c(
+            "div",
+            { staticClass: "row pt-5" },
+            _vm._l(_vm.product.images, function(image) {
+              return _c(
+                "div",
+                { staticClass: "col-4 pb-4" },
+                [_c("image-thumbnail", { attrs: { src: image.image } })],
+                1
+              )
+            }),
+            0
+          )
         ],
-        2
+        1
       ),
       _vm._v(" "),
       _c(

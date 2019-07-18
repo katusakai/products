@@ -26,10 +26,10 @@
                 <div>{{selectedProduct.description}}</div>
             </div>
             <div>
-<!--                <image-thumbnail-->
-<!--                        v-if="imageShow && selectedProduct.images[0]"-->
-<!--                        :src="selectedProduct.images[0].image"-->
-<!--                ></image-thumbnail>-->
+                <image-thumbnail
+                        v-if="imageShow && selectedProduct.images[0]"
+                        :src="selectedProduct.images[0].image"
+                ></image-thumbnail>
             </div>
 
         </div>
