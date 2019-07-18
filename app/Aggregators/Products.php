@@ -50,7 +50,7 @@ class Products
     {
         foreach ($images as $image) {
             if (UrlParser::ifLocal($image->image)) {
-                $image->image = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . str_replace('index.php', '', $_SERVER['SCRIPT_NAME']) . 'storage/' . $image->image;
+                $image->image = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . str_replace('index.php', '', $_SERVER['SCRIPT_NAME']) . 'uploads/' . $image->image;
             }
         }
         return $images;

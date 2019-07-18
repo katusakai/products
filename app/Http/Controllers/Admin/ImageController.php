@@ -19,9 +19,11 @@ class ImageController extends Controller
             'image' => 'required|image'
         ]);
 
-        $imagePath = $request->image->store('uploads', 'public');
+//        $imagePath = $request->image->store('uploads', 'public');
+//
+//        \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200)->save();
 
-        \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200)->save();
+        $imagePath = request()->file('image')->store('images', ['disk' => 'my_files']);
 
         $image = new Image();
         $image->product_id = $productId;
