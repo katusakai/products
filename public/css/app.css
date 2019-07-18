@@ -10657,6 +10657,11 @@ a.text-dark:focus {
   cursor: pointer;
 }
 
+.product-thumbnail {
+  white-space: nowrap;
+  padding: 10px;
+}
+
 .img-thumbnail {
   display: block;
   margin-left: auto;

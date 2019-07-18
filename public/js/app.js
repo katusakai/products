@@ -1884,13 +1884,40 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PriceFieldComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PriceFieldComponent */ "./resources/js/components/PriceFieldComponent.vue");
+/* harmony import */ var _ImageThumbnailComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ImageThumbnailComponent */ "./resources/js/components/ImageThumbnailComponent.vue");
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    ImageThumbnailComponent: _ImageThumbnailComponent__WEBPACK_IMPORTED_MODULE_1__["default"],
+    PriceFieldComponent: _PriceFieldComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: ['product']
 });
 
@@ -39386,7 +39413,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    " + _vm._s(_vm.product) + "\n")])
+  return _c("div", { staticClass: "border product-thumbnail" }, [
+    _c("div", { staticClass: "text-center" }, [
+      _c("strong", [_vm._v("Product name:")]),
+      _vm._v("\n        " + _vm._s(_vm.product.name) + "\n    ")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-center" }, [
+      _c("strong", [_vm._v("Product sku:")]),
+      _vm._v("\n        " + _vm._s(_vm.product.sku) + "\n    ")
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "text-center" },
+      [
+        _c("price-field-component", {
+          attrs: {
+            price: _vm.product.price,
+            "discounted-price": _vm.product.discounted_price,
+            taxesText: _vm.product.taxes_text
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      [
+        _c("image-thumbnail-component", {
+          attrs: { src: _vm.product.images[0].image }
+        })
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -39410,10 +39472,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container-fluid" }, [
     _c(
       "div",
-      { staticClass: "table-responsive" },
+      { staticClass: "table-responsive d-flex justify-content-center" },
       [
         _c("pagination", {
           attrs: { data: _vm.products, "show-disabled": true },
@@ -39429,7 +39491,7 @@ var render = function() {
       _vm._l(_vm.products.data, function(product) {
         return _c(
           "div",
-          { staticClass: "col-xs p-1" },
+          { staticClass: "col p-1" },
           [_c("product-card-for-clients", { attrs: { product: product } })],
           1
         )
@@ -39439,7 +39501,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "table-responsive" },
+      { staticClass: "table-responsive d-flex justify-content-center" },
       [
         _c("pagination", {
           attrs: { data: _vm.products, "show-disabled": true },
