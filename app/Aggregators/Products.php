@@ -10,9 +10,21 @@ use App\Product;
 
 class Products
 {
-    public function getSome($pages)
+    public function getSomeAdmin($pages)
     {
         $products = Product::orderBy('created_at', 'desc')->paginate($pages);
+        foreach ($products as $key => $product) {
+
+            $this->agregate($product);
+
+            $products[$key] = $product;
+        }
+        return $products;
+    }
+
+    public function getSomeClient($pages)
+    {
+        $products = Product::where('status', 1)->orderBy('created_at', 'desc')->paginate($pages);
         foreach ($products as $key => $product) {
 
             $this->agregate($product);
