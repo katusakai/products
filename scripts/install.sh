@@ -23,11 +23,13 @@ echo '###Setting file permissions'
 if [ "$OS" = "Windows_NT" ]; then
 winpty docker-compose exec php chown -R $USER:www-data storage
 winpty docker-compose exec php chown -R $USER:www-data bootstrap/cache
+winpty docker-compose exec php chown -R $USER:www-data database/database.sqlite
 winpty docker-compose exec php chmod -R 775 storage
 winpty docker-compose exec php chmod -R 775 bootstrap/cache
 else
 docker-compose exec php chown -R $USER:www-data storage
 docker-compose exec php chown -R $USER:www-data bootstrap/cache
+docker-compose exec php chown -R $USER:www-data database/database.sqlite
 docker-compose exec php chmod -R 775 storage
 docker-compose exec php chmod -R 775 bootstrap/cache
 fi
