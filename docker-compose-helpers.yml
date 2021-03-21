@@ -14,3 +14,14 @@ services:
     working_dir: /usr/src/app
     volumes:
       - ./api:/usr/src/app
+
+  #Certbot Service
+  certbot:
+    image: certbot/certbot
+    env_file:
+      - .env
+    container_name: ${APP_NAME}_certbot
+    restart: unless-stopped
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
